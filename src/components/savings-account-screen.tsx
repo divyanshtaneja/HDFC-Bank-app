@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import { ChevronLeft, HelpCircle, Power, ChevronDown, ChevronRight, Share2, ArrowUpLeft, ArrowDownRight, Search } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import SideMenu from './side-menu'
 import AccountDetailsScreen from './account-details-screen'
 import { formatIndianCurrency, formatDate } from '../utils/formatters'
 
@@ -101,9 +100,9 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
   const [currentAccount, setCurrentAccount] = useState<Account | null>(null)
-  const [showAccountDetails, setShowAccountDetails] = useState(false)
+  const [showAccountDetails, setShowAccountDetails] = useState(false) 
 
-  useEffect(() => {
+useEffect(() => {
     const account = accounts.find(acc => acc.number === selectedAccount)
     setCurrentAccount(account || null)
     setVisibleTransactions(10)
