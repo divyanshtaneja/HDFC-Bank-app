@@ -3,20 +3,19 @@
 import React, { useState } from 'react'
 import { ChevronLeft, HelpCircle, Power, ChevronDown, Share2 } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 interface SavingSchemeAccountScreenProps {
   onBack: () => void
+  onLogout: () => void
 }
 
-export default function SavingSchemeAccountScreen({ onBack }: SavingSchemeAccountScreenProps) {
-  const router = useRouter()
+export default function SavingSchemeAccountScreen({ onBack, onLogout }: SavingSchemeAccountScreenProps) {
   const [isShowMore, setIsShowMore] = useState(false)
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showBufferMessage, setShowBufferMessage] = useState(false)
 
   const handleLogout = () => {
-    router.push('/')
+    onLogout()
   }
 
   const handleRequestStatement = () => {

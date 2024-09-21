@@ -218,7 +218,9 @@ export default function DashboardScreen({ onNavigate }: DashboardScreenProps) {
               <div key={index} className="flex flex-col items-center">
                 <div className="bg-blue-100 rounded-full p-3 mb-2 border-2 border-blue-600">
                   <div className="bg-blue-600 rounded-full p-2">
-                    <action.icon className="text-white" />
+                    <div className="text-white">
+                      <action.icon />
+                    </div>
                   </div>
                 </div>
                 <span className="text-xs text-center text-black">{action.name}</span>

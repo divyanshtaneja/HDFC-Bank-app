@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, HelpCircle, Power, ChevronDown, ChevronRight, Share2, ArrowUpLeft, ArrowDownRight, Search } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import AccountDetailsScreen from './account-details-screen'
 import { formatIndianCurrency, formatDate } from '../utils/formatters'
 
@@ -11,6 +10,7 @@ interface SavingsAccountScreenProps {
   onBack: () => void
   selectedAccount: string
   onAccountChange: (accountNumber: string) => void
+  onLogout: () => void
 }
 
 interface Account {
@@ -94,21 +94,20 @@ const transactionsData: { [key: string]: Transaction[] } = {
   ],
 }
 
-export default function SavingsAccountScreen({ onBack, selectedAccount, onAccountChange }: SavingsAccountScreenProps) {
-  const router = useRouter()
+export default function SavingsAccountScreen({ onBack, selectedAccount, onAccountChange, onLogout }: SavingsAccountScreenProps) {
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
   const [currentAccount, setCurrentAccount] = useState<Account | null>(null)
-  const [showAccountDetails, setShowAccountDetails] = useState(false) 
+  const [showAccountDetails, setShowAccountDetails] = useState(false)
 
-useEffect(() => {
+  useEffect(() => {
     const account = accounts.find(acc => acc.number === selectedAccount)
     setCurrentAccount(account || null)
     setVisibleTransactions(10)
   }, [selectedAccount])
 
-  const handleAccountSelect = (account: Account) => {
+  const handleAccountSelect = (account: Account)  => {
     onAccountChange(account.number)
     setShowAccountDropdown(false)
   }
@@ -126,7 +125,7 @@ useEffect(() => {
   }
 
   const handleLogout = () => {
-    router.push('/')
+    onLogout()
   }
 
   if (!currentAccount) {

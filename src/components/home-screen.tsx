@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, useMemo } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { UserCircle2, Gift, Home, Coins, MessageCircle, CreditCard, HelpCircle, MoreHorizontal } from 'lucide-react'
 import { useRouter } from 'next/navigation'
@@ -13,8 +13,13 @@ export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   
-  // Use useMemo to create the refs array
-  const pinInputRefs = useMemo(() => Array(4).fill(null).map(() => useRef<HTMLInputElement>(null)), [])
+  // Create refs for pin inputs
+  const pinInput1 = useRef<HTMLInputElement>(null)
+  const pinInput2 = useRef<HTMLInputElement>(null)
+  const pinInput3 = useRef<HTMLInputElement>(null)
+  const pinInput4 = useRef<HTMLInputElement>(null)
+  
+  const pinInputRefs = [pinInput1, pinInput2, pinInput3, pinInput4]
 
   useEffect(() => {
     if (pin.join('') === '0019') {
@@ -27,9 +32,9 @@ export default function HomeScreen() {
     } else if (pin.join('').length === 4) {
       setError('Incorrect PIN. Please try again.')
       setPin(['', '', '', ''])
-      pinInputRefs[0].current?.focus()
+      pinInput1.current?.focus()
     }
-  }, [pin, pinInputRefs, router])
+  }, [pin, router])
 
   const handlePinChange = (index: number, value: string) => {
     if (value.length <= 1) {
