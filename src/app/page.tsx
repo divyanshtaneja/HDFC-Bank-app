@@ -11,23 +11,30 @@ export default function Component() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const pinInputRefs = [useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null)]
   const router = useRouter()
+
+  const pinInputRef1 = useRef<HTMLInputElement>(null)
+  const pinInputRef2 = useRef<HTMLInputElement>(null)
+  const pinInputRef3 = useRef<HTMLInputElement>(null)
+  const pinInputRef4 = useRef<HTMLInputElement>(null)
+
+  const pinInputRefs = [pinInputRef1, pinInputRef2, pinInputRef3, pinInputRef4]
 
   useEffect(() => {
     if (pin.join('') === '0019') {
       setError('')
       setIsLoading(true)
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setIsLoading(false)
         router.push('/dashboard')
       }, 2000)
+      return () => clearTimeout(timer)
     } else if (pin.join('').length === 4) {
       setError('Incorrect PIN. Please try again.')
       setPin(['', '', '', ''])
-      pinInputRefs[0].current?.focus()
+      pinInputRef1.current?.focus()
     }
-  }, [pin, router, pinInputRefs])
+  }, [pin, router])
 
   const handlePinChange = (index: number, value: string) => {
     if (value.length <= 1) {

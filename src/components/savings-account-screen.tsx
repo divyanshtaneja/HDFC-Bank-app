@@ -9,7 +9,6 @@ import AccountDetailsScreen from './account-details-screen'
 interface SavingsAccountScreenProps {
   onBack: () => void
   onLogout: () => void
-  onShowDetails: (accountNumber: string) => void
   selectedAccount: string
   onAccountChange: (accountNumber: string) => void
 }
@@ -17,7 +16,27 @@ interface SavingsAccountScreenProps {
 interface Account {
   number: string
   balance: string
+  accountHolder: string
+  branch: string
+  ifsc: string
 }
+
+const accounts: Account[] = [
+  {
+    number: '03271000009991',
+    balance: '2,13,558.62',
+    accountHolder: 'SANJAY TANEJA',
+    branch: 'MULTAN NAGAR',
+    ifsc: 'HDFC0004362',
+  },
+  {
+    number: '03271000041278',
+    balance: '13,34,660.57',
+    accountHolder: 'JAYA TANEJA',
+    branch: 'MULTAN NAGAR, DELHI',
+    ifsc: 'HDFC0004362',
+  },
+]
 
 interface Transaction {
   date: string
@@ -27,11 +46,6 @@ interface Transaction {
   depositAmt: number | null
   closingBalance: number
 }
-
-const accounts: Account[] = [
-  { number: '03271000009991', balance: '2,13,558.62' },
-  { number: '03271000041278', balance: '13,34,660.57' },
-]
 
 const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
@@ -50,11 +64,11 @@ const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2024-08-07', narration: 'EMI 454727061 CHQ S4547270610231 0824454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 271238.52 },
     { date: '2024-08-06', narration: '50100475898890-TPT-RENT-SANKALP KOHLI', refNo: '0000000206490546', withdrawalAmt: null, depositAmt: 35000.00, closingBalance: 306532.52 },
     { date: '2024-08-01', narration: 'NEFT CR-UTIB0001911-ASS CREATIONS PRIVATE LIMITED922020024883518-SANJAY TANEJA-AXOBR21479128454', refNo: 'AXOBR21479128454', withdrawalAmt: null, depositAmt: 74969.00, closingBalance: 271532.52 },
-    { date: '2024-07-30', narration: 'CBDT/BANK REFERENCE NO:K2421222491245/CIN NO:24073001677821HDFC/ONLINE', refNo: '0240730220002484', withdrawalAmt: 23936.00, depositAmt: null, closingBalance: 196563.52 },
-    { date: '2024-07-25', narration: 'CC 00000361147XXXX6532 AUTOPAY SI-MAD', refNo: '0000000600856562', withdrawalAmt: 450.00, depositAmt: null, closingBalance: 220499.52 },
-    { date: '2024-07-24', narration: 'NEFT CR-ICIC0001946-SANJAY TANEJA HUF-SANJAY TANEJA-000150274835', refNo: '0000000150274835', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 220949.52 },
-    { date: '2024-07-07', narration: 'EMI 454727061 CHQ S4547270610221 0724454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 120949.52 },
-    { date: '2024-07-07', narration: 'EMI 461561532 CHQ S4615615320061 0724461561532', refNo: '000000000000000', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 156243.52 },
+    { date: '2024-07-25', narration: 'CC 00000361147XXXX6532 AUTOPAY SI-MAD', refNo: '0000000600873878', withdrawalAmt: 440.00, depositAmt: null, closingBalance: 196563.52 },
+    { date: '2024-07-18', narration: 'UPI-TANEJA TYRES-9811390600@IBL-IBKL0000193-420127726937-UPI', refNo: '0000420127726937', withdrawalAmt: 2000.00, depositAmt: null, closingBalance: 197003.52 },
+    { date: '2024-07-15', narration: 'ATW-416021XXXXXX8910-S1ACDD15-WEST DELHI', refNo: '0000000000000488', withdrawalAmt: 1000.00, depositAmt: null, closingBalance: 199003.52 },
+    { date: '2024-07-07', narration: 'EMI 461561532 CHQ S4615615320061 0724461561532', refNo: '000000000000000', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 200003.52 },
+    { date: '2024-07-07', narration: 'EMI 454727061 CHQ S4547270610221 0724454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 240335.52 },
   ],
   '03271000041278': [
     { date: '2024-09-16', narration: 'IMPS-426018195789-BHATNAGAR INTERNATIONAL SCHOOL-UBIN-XXXXXXXXXXX8774-VRINDA', refNo: '0000426018195789', withdrawalAmt: 1800.00, depositAmt: null, closingBalance: 1334660.57 },
@@ -72,15 +86,15 @@ const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2024-06-25', narration: 'CC 000552365XXXXXX6971 AUTOPAY SI-TAD', refNo: '0000000594634754', withdrawalAmt: 16882.00, depositAmt: null, closingBalance: 728395.81 },
     { date: '2024-06-14', narration: 'NEFT DR-UTIB0001911-RAJNI-NETBANK, MUM-N166243095909089-CREDIT', refNo: 'N166243095909089', withdrawalAmt: 1500000.00, depositAmt: null, closingBalance: 745277.81 },
     { date: '2024-06-08', narration: 'INT. AUTO_REDEMPTION  50300522743030', refNo: '3304220240608767', withdrawalAmt: null, depositAmt: 53.00, closingBalance: 2245277.81 },
-    { date: '2024-06-05', narration: 'NEFT CR-ICIC0SF0002-ABHAY TAYAL-SANJAY TANEJA-HS92415746056800', refNo: 'HS92415746056800', withdrawalAmt: null, depositAmt: 500000.00, closingBalance: 2245224.81 },
-    { date: '2024-06-03', narration: 'NEFT CR-ICIC0SF0002-ABHAY TAYAL-SANJAY TANEJA-HS92415545733367', refNo: 'HS92415545733367', withdrawalAmt: null, depositAmt: 500000.00, closingBalance: 1745224.81 },
-    { date: '2024-05-31', narration: '11000222000884/ATOMBHATNAGARINTERNA', refNo: '0000241527020688', withdrawalAmt: 62026.24, depositAmt: null, closingBalance: 1245224.81 },
-    { date: '2024-05-28', narration: 'SBY901679_BRANCH_RENEWAL', refNo: '000000000000000', withdrawalAmt: 20.00, depositAmt: null, closingBalance: 1307251.05 },
-    { date: '2024-05-24', narration: 'NEFT DR-ICIC0001128-ABHAY TAYAL-NETBANK, MUM-N145243054264920-CRD', refNo: 'N145243054264920', withdrawalAmt: 1000000.00, depositAmt: null, closingBalance: 1307271.05 },
+    { date: '2024-06-01', narration: 'INTEREST PAID TILL 31-MAY-2024', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 13982.00, closingBalance: 2245224.81 },
+    { date: '2024-05-25', narration: 'CC 000552365XXXXXX6971 AUTOPAY SI-TAD', refNo: '0000000588420131', withdrawalAmt: 17654.00, depositAmt: null, closingBalance: 2231242.81 },
+    { date: '2024-05-18', narration: '50100436924130-TPT-PAY-DIVYANSH TANEJA', refNo: '0000000209482375', withdrawalAmt: 500000.00, depositAmt: null, closingBalance: 2248896.81 },
+    { date: '2024-05-08', narration: 'NEFT CR-SBIN0000TBU-ITDTAX REFUND 2023-24 ACOPT3259N-JAYA TANEJA-SBIN214221950576', refNo: 'SBIN214221950576', withdrawalAmt: null, depositAmt: 45670.00, closingBalance: 2748896.81 },
+    { date: '2024-05-01', narration: 'INTEREST PAID TILL 30-APR-2024', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 15321.00, closingBalance: 2703226.81 },
   ],
 }
 
-export default function SavingsAccountScreen({ onBack, onLogout, onShowDetails, selectedAccount, onAccountChange }: SavingsAccountScreenProps) {
+export default function SavingsAccountScreen({ onBack, onLogout, selectedAccount, onAccountChange }: SavingsAccountScreenProps) {
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
@@ -235,12 +249,14 @@ export default function SavingsAccountScreen({ onBack, onLogout, onShowDetails, 
                   </div>
                 </div>
               ))}
-              <button 
-                className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded"
-                onClick={handleSeeMore}
-              >
-                {visibleTransactions === 10 ? 'See More' : 'See Less'}
-              </button>
+              {transactionsData[currentAccount.number].length > 10 && (
+                <button 
+                  className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded"
+                  onClick={handleSeeMore}
+                >
+                  {visibleTransactions === 10 ? 'See More' : 'See Less'}
+                </button>
+              )}
             </div>
           )}
         </div>
