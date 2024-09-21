@@ -11,9 +11,6 @@ import { formatIndianCurrency } from '../utils/formatters'
 
 interface DashboardScreenProps {
   onLogout: () => void
-  onViewAll: () => void
-  onViewSavingsAccount: () => void
-  onViewSavingSchemeAccount: () => void
   onNavigate: (screen: string) => void
 }
 
@@ -70,7 +67,7 @@ const accounts = [
   { number: '03271000041278', balance: '13,34,660.57' },
 ]
 
-export default function DashboardScreen({ onLogout, onViewAll, onViewSavingsAccount, onViewSavingSchemeAccount, onNavigate }: DashboardScreenProps) {
+export default function DashboardScreen({ onLogout, onNavigate }: DashboardScreenProps) {
   const [activeTab, setActiveTab] = useState('OVERVIEW')
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
   const [showSavingsAccount, setShowSavingsAccount] = useState(false)
@@ -118,7 +115,6 @@ export default function DashboardScreen({ onLogout, onViewAll, onViewSavingsAcco
       <SavingsAccountScreen
         onBack={handleBackFromSavingsAccount}
         onLogout={onLogout}
-        onShowDetails={(accountNumber) => console.log('Show details for', accountNumber)}
         selectedAccount={selectedAccount}
         onAccountChange={setSelectedAccount}
       />

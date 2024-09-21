@@ -25,7 +25,7 @@ export default function HomeScreen() {
       setPin(['', '', '', ''])
       pinInputRefs[0].current?.focus()
     }
-  }, [pin])
+  }, [pin, pinInputRefs])
 
   const handlePinChange = (index: number, value: string) => {
     if (value.length <= 1) {

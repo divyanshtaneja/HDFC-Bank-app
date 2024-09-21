@@ -27,7 +27,7 @@ export default function Component() {
       setPin(['', '', '', ''])
       pinInputRefs[0].current?.focus()
     }
-  }, [pin, router])
+  }, [pin, router, pinInputRefs])
 
   const handlePinChange = (index: number, value: string) => {
     if (value.length <= 1) {
