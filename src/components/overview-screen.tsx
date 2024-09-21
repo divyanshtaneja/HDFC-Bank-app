@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ChevronLeft, HelpCircle, Power, ChevronRight, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface OverviewScreenProps {
   onBack: () => void
@@ -13,9 +14,15 @@ interface OverviewScreenProps {
 
 export default function OverviewScreen({ onBack, onLogout, onViewSavingsAccount, onViewSavingSchemeAccount }: OverviewScreenProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
+  const router = useRouter()
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section)
+  }
+
+  const handleLogout = () => {
+    onLogout()
+    router.push('/')
   }
 
   const accountTypes = [
@@ -37,7 +44,7 @@ export default function OverviewScreen({ onBack, onLogout, onViewSavingsAccount,
           <Link href="https://www.hdfcbank.com">
             <HelpCircle size={24} />
           </Link>
-          <button onClick={onLogout}>
+          <button onClick={handleLogout}>
             <Power size={24} />
           </button>
         </div>

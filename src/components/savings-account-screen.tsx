@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, HelpCircle, Power, ChevronDown, ChevronRight, Share2, ArrowUpLeft, ArrowDownRight, Search } from 'lucide-react'
 import Link from 'next/link'
-import { formatIndianCurrency, formatDate } from '../utils/formatters'
+import { useRouter } from 'next/navigation'
+import SideMenu from './side-menu'
 import AccountDetailsScreen from './account-details-screen'
+import { formatIndianCurrency, formatDate } from '../utils/formatters'
 
 interface SavingsAccountScreenProps {
   onBack: () => void
-  onLogout: () => void
   selectedAccount: string
   onAccountChange: (accountNumber: string) => void
 }
@@ -94,7 +95,8 @@ const transactionsData: { [key: string]: Transaction[] } = {
   ],
 }
 
-export default function SavingsAccountScreen({ onBack, onLogout, selectedAccount, onAccountChange }: SavingsAccountScreenProps) {
+export default function SavingsAccountScreen({ onBack, selectedAccount, onAccountChange }: SavingsAccountScreenProps) {
+  const router = useRouter()
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
@@ -124,6 +126,10 @@ export default function SavingsAccountScreen({ onBack, onLogout, selectedAccount
     setShowAccountDetails(false)
   }
 
+  const handleLogout = () => {
+    router.push('/')
+  }
+
   if (!currentAccount) {
     return <div>Loading...</div>
   }
@@ -132,7 +138,7 @@ export default function SavingsAccountScreen({ onBack, onLogout, selectedAccount
     return (
       <AccountDetailsScreen
         onBack={handleBackFromDetails}
-        onLogout={onLogout}
+        onLogout={handleLogout}
         accountNumber={selectedAccount}
       />
     )
@@ -149,7 +155,7 @@ export default function SavingsAccountScreen({ onBack, onLogout, selectedAccount
           <Link href="https://www.hdfcbank.com" aria-label="Help">
             <HelpCircle size={24} />
           </Link>
-          <button onClick={onLogout} aria-label="Logout">
+          <button onClick={handleLogout} aria-label="Logout">
             <Power size={24} />
           </button>
         </div>

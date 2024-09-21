@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ChevronRight, Home, CreditCard, PiggyBank, TrendingUp, Briefcase, User, LogOut } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 interface SideMenuProps {
   onClose: () => void
@@ -12,10 +13,12 @@ interface SideMenuProps {
 
 export default function SideMenu({ onClose, onLogout, onNavigate }: SideMenuProps) {
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
   const handleNavigation = (screen: string) => {
     if (screen === 'Logout') {
       onLogout()
+      router.push('/')
     } else {
       setLoading(true)
       setTimeout(() => {

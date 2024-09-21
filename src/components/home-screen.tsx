@@ -11,9 +11,8 @@ export default function HomeScreen() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   
-  const pinInputRefs = useMemo(() => 
-    Array(4).fill(null).map(() => useRef<HTMLInputElement>(null)),
-  [])
+  // Use useMemo to create the refs array
+  const pinInputRefs = useMemo(() => Array(4).fill(null).map(() => useRef<HTMLInputElement>(null)), [])
 
   useEffect(() => {
     if (pin.join('') === '0019') {
@@ -28,7 +27,7 @@ export default function HomeScreen() {
       setPin(['', '', '', ''])
       pinInputRefs[0].current?.focus()
     }
-  }, [pin])
+  }, [pin, pinInputRefs]) // Add pinInputRefs to the dependency array
 
   const handlePinChange = (index: number, value: string) => {
     if (value.length <= 1) {

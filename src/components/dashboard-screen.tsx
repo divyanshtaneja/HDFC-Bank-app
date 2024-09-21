@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Menu, HelpCircle, Power, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import SideMenu from './side-menu'
 import SavingsAccountScreen from './savings-account-screen'
 import OverviewScreen from './overview-screen'
@@ -10,7 +11,6 @@ import SavingSchemeAccountScreen from './saving-scheme-account-screen'
 import { formatIndianCurrency } from '../utils/formatters'
 
 interface DashboardScreenProps {
-  onLogout: () => void
   onNavigate: (screen: string) => void
 }
 
@@ -67,7 +67,8 @@ const accounts = [
   { number: '03271000041278', balance: '13,34,660.57' },
 ]
 
-export default function DashboardScreen({ onLogout, onNavigate }: DashboardScreenProps) {
+export default function DashboardScreen({ onNavigate }: DashboardScreenProps) {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState('OVERVIEW')
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
   const [showSavingsAccount, setShowSavingsAccount] = useState(false)
@@ -83,6 +84,10 @@ export default function DashboardScreen({ onLogout, onNavigate }: DashboardScree
     { name: 'Recharge', icon: RechargeIcon },
     { name: 'UPI Payment', icon: UPIPaymentIcon },
   ]
+
+  const handleLogout = () => {
+    router.push('/')
+  }
 
   const handleViewSavingsAccount = () => {
     setShowSavingsAccount(true)
@@ -114,7 +119,7 @@ export default function DashboardScreen({ onLogout, onNavigate }: DashboardScree
     return (
       <SavingsAccountScreen
         onBack={handleBackFromSavingsAccount}
-        onLogout={onLogout}
+        onLogout={handleLogout}
         selectedAccount={selectedAccount}
         onAccountChange={setSelectedAccount}
       />
@@ -125,7 +130,7 @@ export default function DashboardScreen({ onLogout, onNavigate }: DashboardScree
     return (
       <SavingSchemeAccountScreen
         onBack={handleBackFromSavingSchemeAccount}
-        onLogout={onLogout}
+        onLogout={handleLogout}
       />
     )
   }
@@ -134,7 +139,7 @@ export default function DashboardScreen({ onLogout, onNavigate }: DashboardScree
     return (
       <OverviewScreen
         onBack={handleBackFromOverview}
-        onLogout={onLogout}
+        onLogout={handleLogout}
         onViewSavingsAccount={handleViewSavingsAccount}
         onViewSavingSchemeAccount={handleViewSavingSchemeAccount}
       />
@@ -154,7 +159,7 @@ export default function DashboardScreen({ onLogout, onNavigate }: DashboardScree
           <Link href="https://www.hdfcbank.com">
             <HelpCircle size={24} />
           </Link>
-          <button onClick={onLogout}>
+          <button onClick={handleLogout}>
             <Power size={24} />
           </button>
         </div>
@@ -234,7 +239,7 @@ export default function DashboardScreen({ onLogout, onNavigate }: DashboardScree
       {isSideMenuOpen && (
         <SideMenu
           onClose={() => setIsSideMenuOpen(false)}
-          onLogout={onLogout}
+          onLogout={handleLogout}
           onNavigate={(screen) => {
             setIsSideMenuOpen(false)
             onNavigate(screen)

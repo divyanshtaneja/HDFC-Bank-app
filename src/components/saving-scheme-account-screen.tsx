@@ -3,16 +3,21 @@
 import React, { useState } from 'react'
 import { ChevronLeft, HelpCircle, Power, ChevronDown, Share2 } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface SavingSchemeAccountScreenProps {
   onBack: () => void
-  onLogout: () => void
 }
 
-export default function SavingSchemeAccountScreen({ onBack, onLogout }: SavingSchemeAccountScreenProps) {
+export default function SavingSchemeAccountScreen({ onBack }: SavingSchemeAccountScreenProps) {
+  const router = useRouter()
   const [isShowMore, setIsShowMore] = useState(false)
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showBufferMessage, setShowBufferMessage] = useState(false)
+
+  const handleLogout = () => {
+    router.push('/')
+  }
 
   const handleRequestStatement = () => {
     setShowBufferMessage(true)
@@ -32,7 +37,7 @@ export default function SavingSchemeAccountScreen({ onBack, onLogout }: SavingSc
           <Link href="https://www.hdfcbank.com">
             <HelpCircle size={24} />
           </Link>
-          <button onClick={onLogout}>
+          <button onClick={handleLogout}>
             <Power size={24} />
           </button>
         </div>
