@@ -3,6 +3,14 @@
 import { useRouter } from 'next/navigation'
 import DashboardScreen from '@/components/dashboard-screen'
 
+interface DashboardScreenProps {
+  onLogout: () => void;
+  onViewAll: () => void;
+  onViewSavingsAccount: () => void;
+  onViewSavingSchemeAccount: () => void;
+  onNavigate: (screen: string) => void;
+}
+
 export default function DashboardPage() {
   const router = useRouter()
 

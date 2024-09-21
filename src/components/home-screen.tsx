@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import { UserCircle2, Gift, Home, Coins, MessageCircle, CreditCard, HelpCircle, MoreHorizontal } from 'lucide-react'
 
@@ -10,7 +10,10 @@ export default function HomeScreen() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const pinInputRefs = [useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null)]
+  
+  const pinInputRefs = useMemo(() => 
+    Array(4).fill(null).map(() => useRef<HTMLInputElement>(null)),
+  [])
 
   useEffect(() => {
     if (pin.join('') === '0019') {
@@ -25,7 +28,7 @@ export default function HomeScreen() {
       setPin(['', '', '', ''])
       pinInputRefs[0].current?.focus()
     }
-  }, [pin, pinInputRefs])
+  }, [pin])
 
   const handlePinChange = (index: number, value: string) => {
     if (value.length <= 1) {
