@@ -49,6 +49,7 @@ interface Transaction {
 
 const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2024-09-23', narration: 'UPI-MOHAMMAD VASIR-vasirkhan12345@okaxis-UTIB0000478-426769591420-UPI', refNo: '426769591420', withdrawalAmt: null, depositAmt: 11000.00, closingBalance: 224558.62 },
     { date: '2024-09-10', narration: 'UPI-DEEPAK CHOPRA-Q19860644@YBL-YESB0YBLUPI-425441521254-UPI', refNo: '0000425441521254', withdrawalAmt: 300.00, depositAmt: null, closingBalance: 213558.62 },
     { date: '2024-09-10', narration: 'UPI-JOGINDER PAL-Q487763362@YBL-YESB0YBLUPI-425420415914-UPI', refNo: '0000425420415914', withdrawalAmt: 120.00, depositAmt: null, closingBalance: 213858.62 },
     { date: '2024-09-09', narration: 'UPI-DIVYANSH TANEJA-9560755784@PTYES-ICIC0000288-425374287983-UPI', refNo: '0000425374287983', withdrawalAmt: 14940.00, depositAmt: null, closingBalance: 213978.62 },
