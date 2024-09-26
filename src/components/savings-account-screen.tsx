@@ -24,7 +24,7 @@ interface Account {
 const accounts: Account[] = [
   {
     number: '03271000009991',
-    balance: '2,24,558.62',
+    balance: '2,23,413.62',
     accountHolder: 'SANJAY TANEJA',
     branch: 'MULTAN NAGAR',
     ifsc: 'HDFC0004362',
@@ -49,6 +49,7 @@ interface Transaction {
 
 const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2024-09-25', narration: 'UPI-ALAUDDIN-paytmqr11ea18g7ev@paytm-YESB0PTMUPI-426971243960-UPI', refNo: '426971243960', withdrawalAmt: 1,145.00, depositAmt: null, closingBalance: 223413.62 },   
     { date: '2024-09-23', narration: 'UPI-MOHAMMAD VASIR-vasirkhan12345@okaxis-UTIB0000478-426769591420-UPI', refNo: '426769591420', withdrawalAmt: null, depositAmt: 11000.00, closingBalance: 224558.62 },
     { date: '2024-09-10', narration: 'UPI-DEEPAK CHOPRA-Q19860644@YBL-YESB0YBLUPI-425441521254-UPI', refNo: '0000425441521254', withdrawalAmt: 300.00, depositAmt: null, closingBalance: 213558.62 },
     { date: '2024-09-10', narration: 'UPI-JOGINDER PAL-Q487763362@YBL-YESB0YBLUPI-425420415914-UPI', refNo: '0000425420415914', withdrawalAmt: 120.00, depositAmt: null, closingBalance: 213858.62 },
@@ -69,7 +70,7 @@ const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2024-07-18', narration: 'UPI-TANEJA TYRES-9811390600@IBL-IBKL0000193-420127726937-UPI', refNo: '0000420127726937', withdrawalAmt: 2000.00, depositAmt: null, closingBalance: 197003.52 },
     { date: '2024-07-15', narration: 'ATW-416021XXXXXX8910-S1ACDD15-WEST DELHI', refNo: '0000000000000488', withdrawalAmt: 1000.00, depositAmt: null, closingBalance: 199003.52 },
     { date: '2024-07-07', narration: 'EMI 461561532 CHQ S4615615320061 0724461561532', refNo: '000000000000000', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 200003.52 },
-    { date: '2024-07-07', narration: 'EMI 454727061 CHQ S4547270610221 0724454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 240335.52 },
+    
   ],
   '03271000041278': [
     { date: '2024-09-16', narration: 'IMPS-426018195789-BHATNAGAR INTERNATIONAL SCHOOL-UBIN-XXXXXXXXXXX8774-VRINDA', refNo: '0000426018195789', withdrawalAmt: 1800.00, depositAmt: null, closingBalance: 1334660.57 },

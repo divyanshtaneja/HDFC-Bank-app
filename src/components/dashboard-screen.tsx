@@ -63,7 +63,7 @@ const UPIPaymentIcon = () => (
 )
 
 const accounts = [
-  { number: '03271000009991', balance: '2,13,558.62' },
+  { number: '03271000009991', balance: '2,23,413.62' },
   { number: '03271000041278', balance: '13,34,660.57' },
 ]
 
