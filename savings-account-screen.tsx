@@ -51,7 +51,7 @@ const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
     { date: '2024-10-01', narration: 'Interest paid till 30-SEP-2024', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 1628.00, closingBalance: 300010.62 },
     { date: '2024-09-30', narration: 'NEFT Cr-UTIB0001911-ASS CREATIONS PRIVATE LIMITED922020024883518-Sanjay Taneja-AXOBR27490376313', refNo: 'AXOBR27490376313', withdrawalAmt: null, depositAmt: 74969.00, closingBalance: 298382.62 },
-    { date: '2024-09-25', narration: 'UPI-ALAUDDIN-paytmqr11ea18g7ev@paytm-YESB0PTMUPI-426971243960-UPI', refNo: '426971243960', withdrawalAmt: 1145.00, depositAmt: null, closingBalance: 223413.62 },   
+    { date: '2024-09-25', narration: 'UPI-ALAUDDIN-paytmqr11ea18g7ev@paytm-YESB0PTMUPI-426971243960-UPI', refNo: '426971243960', withdrawalAmt: 1145.00, depositAmt: null, closingBalance: 223413.62 },      
     { date: '2024-09-23', narration: 'UPI-MOHAMMAD VASIR-vasirkhan12345@okaxis-UTIB0000478-426769591420-UPI', refNo: '426769591420', withdrawalAmt: null, depositAmt: 11000.00, closingBalance: 224558.62 },
     { date: '2024-09-10', narration: 'UPI-DEEPAK CHOPRA-Q19860644@YBL-YESB0YBLUPI-425441521254-UPI', refNo: '0000425441521254', withdrawalAmt: 300.00, depositAmt: null, closingBalance: 213558.62 },
     { date: '2024-09-10', narration: 'UPI-JOGINDER PAL-Q487763362@YBL-YESB0YBLUPI-425420415914-UPI', refNo: '0000425420415914', withdrawalAmt: 120.00, depositAmt: null, closingBalance: 213858.62 },
