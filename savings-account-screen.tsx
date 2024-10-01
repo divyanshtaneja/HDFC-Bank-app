@@ -98,7 +98,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
-  const [currentAccount, setCurrentAccount]  = useState<Account | null>(null)
+  const [currentAccount, setCurrentAccount] = useState<Account | null>(null)
   const [showAccountDetails, setShowAccountDetails] = useState(false)
 
   useEffect(() => {
