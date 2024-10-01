@@ -24,7 +24,7 @@ interface Account {
 const accounts: Account[] = [
   {
     number: '03271000009991',
-    balance: '2,23,413.62',
+    balance: '3,00,010.62',
     accountHolder: 'SANJAY TANEJA',
     branch: 'MULTAN NAGAR',
     ifsc: 'HDFC0004362',
@@ -49,6 +49,8 @@ interface Transaction {
 
 const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2024-10-01', narration: 'Interest paid till 30-SEP-2024', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 1628.00, closingBalance: 300010.62 },
+    { date: '2024-09-30', narration: 'NEFT Cr-UTIB0001911-ASS CREATIONS PRIVATE LIMITED922020024883518-Sanjay Taneja-AXOBR27490376313', refNo: 'AXOBR27490376313', withdrawalAmt: null, depositAmt: 74969.00, closingBalance: 298382.62 },
     { date: '2024-09-25', narration: 'UPI-ALAUDDIN-paytmqr11ea18g7ev@paytm-YESB0PTMUPI-426971243960-UPI', refNo: '426971243960', withdrawalAmt: 1145.00, depositAmt: null, closingBalance: 223413.62 },   
     { date: '2024-09-23', narration: 'UPI-MOHAMMAD VASIR-vasirkhan12345@okaxis-UTIB0000478-426769591420-UPI', refNo: '426769591420', withdrawalAmt: null, depositAmt: 11000.00, closingBalance: 224558.62 },
     { date: '2024-09-10', narration: 'UPI-DEEPAK CHOPRA-Q19860644@YBL-YESB0YBLUPI-425441521254-UPI', refNo: '0000425441521254', withdrawalAmt: 300.00, depositAmt: null, closingBalance: 213558.62 },
@@ -67,9 +69,6 @@ const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2024-08-06', narration: '50100475898890-TPT-RENT-SANKALP KOHLI', refNo: '0000000206490546', withdrawalAmt: null, depositAmt: 35000.00, closingBalance: 306532.52 },
     { date: '2024-08-01', narration: 'NEFT CR-UTIB0001911-ASS CREATIONS PRIVATE LIMITED922020024883518-SANJAY TANEJA-AXOBR21479128454', refNo: 'AXOBR21479128454', withdrawalAmt: null, depositAmt: 74969.00, closingBalance: 271532.52 },
     { date: '2024-07-25', narration: 'CC 00000361147XXXX6532 AUTOPAY SI-MAD', refNo: '0000000600873878', withdrawalAmt: 440.00, depositAmt: null, closingBalance: 196563.52 },
-    { date: '2024-07-18', narration: 'UPI-TANEJA TYRES-9811390600@IBL-IBKL0000193-420127726937-UPI', refNo: '0000420127726937', withdrawalAmt: 2000.00, depositAmt: null, closingBalance: 197003.52 },
-    { date: '2024-07-15', narration: 'ATW-416021XXXXXX8910-S1ACDD15-WEST DELHI', refNo: '0000000000000488', withdrawalAmt: 1000.00, depositAmt: null, closingBalance: 199003.52 },
-    { date: '2024-07-07', narration: 'EMI 461561532 CHQ S4615615320061 0724461561532', refNo: '000000000000000', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 200003.52 },
   ],
   '03271000041278': [
     { date: '2024-09-16', narration: 'IMPS-426018195789-BHATNAGAR INTERNATIONAL SCHOOL-UBIN-XXXXXXXXXXX8774-VRINDA', refNo: '0000426018195789', withdrawalAmt: 1800.00, depositAmt: null, closingBalance: 1334660.57 },
@@ -99,7 +98,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
-  const [currentAccount, setCurrentAccount] = useState<Account | null>(null)
+  const [currentAccount, setCurrentAccount]  = useState<Account | null>(null)
   const [showAccountDetails, setShowAccountDetails] = useState(false)
 
   useEffect(() => {
@@ -108,7 +107,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
     setVisibleTransactions(10)
   }, [selectedAccount])
 
-  const handleAccountSelect = (account: Account)  => {
+  const handleAccountSelect = (account: Account) => {
     onAccountChange(account.number)
     setShowAccountDropdown(false)
   }
