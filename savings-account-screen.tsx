@@ -96,9 +96,7 @@ const transactionsData: { [key: string]: Transaction[] } = {
 
 export default function SavingsAccountScreen({ onBack, selectedAccount, onAccountChange, onLogout }: SavingsAccountScreenProps) {
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
-  const [showAccountDropdown, setShow
-
-AccountDropdown] = useState(false)
+  const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
   const [currentAccount, setCurrentAccount] = useState<Account | null>(null)
   const [showAccountDetails, setShowAccountDetails] = useState(false)
@@ -257,4 +255,39 @@ AccountDropdown] = useState(false)
               ))}
               {transactionsData[currentAccount.number].length > 10 && (
                 <button 
-                  className="w-full text-blue
+                  className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded"
+                  onClick={handleSeeMore}
+                >
+                  {visibleTransactions === 10 ? 'See More' : 'See Less'}
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="bg-white p-4 border-b">
+          <h3 className="text-lg font-semibold mb-2 text-black">Protect Against Insufficient Funds</h3>
+          <p className="text-gray-600 mb-2">
+            Connect your other Current/ Savings accounts/Deposits to this account so that you will always be protected against insufficient funds or bounced cheques.
+          </p>
+          <button className="text-blue-500 flex items-center justify-between w-full">
+            <span>Set up now</span>
+            <ChevronRight size={20} />
+          </button>
+        </div>
+
+        <div className="bg-white p-4">
+          <h3 className="text-lg font-semibold mb-2 text-black">Actions</h3>
+          <div className="space-y-4">
+            {['Open Fixed Deposit', 'Open Recurring Deposit', 'Open Tax Saver Deposit', 'Manage Alerts', 'Request Cheque Book'].map((action, index) => (
+              <button key={index} className="text-blue-500 flex items-center justify-between w-full">
+                <span>{action}</span>
+                <ChevronRight size={20} />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
