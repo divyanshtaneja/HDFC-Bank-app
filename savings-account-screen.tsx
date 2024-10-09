@@ -24,7 +24,7 @@ interface Account {
 const accounts: Account[] = [
   {
     number: '03271000009991',
-    balance: '3,00,010.62',
+    balance: '2,24,384.62',
     accountHolder: 'SANJAY TANEJA',
     branch: 'MULTAN NAGAR',
     ifsc: 'HDFC0004362',
@@ -49,6 +49,8 @@ interface Transaction {
 
 const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2024-10-07', narration: 'EMI 454727061 Chq S4547270610251 1024454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 224384.62 },
+    { date: '2024-10-07', narration: 'EMI 461561532 Chq S4615615320091 1024461561532', refNo: '000000000000000', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 259678.62 },
     { date: '2024-10-01', narration: 'Interest paid till 30-SEP-2024', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 1628.00, closingBalance: 300010.62 },
     { date: '2024-09-30', narration: 'NEFT Cr-UTIB0001911-ASS CREATIONS PRIVATE LIMITED922020024883518-Sanjay Taneja-AXOBR27490376313', refNo: 'AXOBR27490376313', withdrawalAmt: null, depositAmt: 74969.00, closingBalance: 298382.62 },
     { date: '2024-09-25', narration: 'UPI-ALAUDDIN-paytmqr11ea18g7ev@paytm-YESB0PTMUPI-426971243960-UPI', refNo: '426971243960', withdrawalAmt: 1145.00, depositAmt: null, closingBalance: 223413.62 },   
@@ -67,9 +69,8 @@ const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2024-08-07', narration: 'EMI 461561532 CHQ S4615615320071 0824461561532', refNo: '000000000000000', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 230906.52 },
     { date: '2024-08-07', narration: 'EMI 454727061 CHQ S4547270610231 0824454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 271238.52 },
     { date: '2024-08-06', narration: '50100475898890-TPT-RENT-SANKALP KOHLI', refNo: '0000000206490546', withdrawalAmt: null, depositAmt: 35000.00, closingBalance: 306532.52 },
-    { date: '2024-08-01', narration: 'NEFT CR-UTIB0001911-ASS CREATIONS PRIVATE LIMITED922020024883518-SANJAY TANEJA-AXOBR21479128454', refNo: 'AXOBR21479128454', withdrawalAmt: null, depositAmt: 74969.00, closingBalance: 271532.52 },
-    { date: '2024-07-25', narration: 'CC 00000361147XXXX6532 AUTOPAY SI-MAD', refNo: '0000000600873878', withdrawalAmt: 440.00, depositAmt: null, closingBalance: 196563.52 },
   ],
+  
   '03271000041278': [
     { date: '2024-09-16', narration: 'IMPS-426018195789-BHATNAGAR INTERNATIONAL SCHOOL-UBIN-XXXXXXXXXXX8774-VRINDA', refNo: '0000426018195789', withdrawalAmt: 1800.00, depositAmt: null, closingBalance: 1334660.57 },
     { date: '2024-09-15', narration: 'IB BILLPAY DR-HDFC4Q-361147XXXX6532', refNo: 'IB15135249450237', withdrawalAmt: 35143.00, depositAmt: null, closingBalance: 1336460.57 },
