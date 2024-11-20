@@ -64,7 +64,7 @@ const UPIPaymentIcon = () => (
 
 const accounts = [
   { number: '03271000009991', balance: '3,18,232.62' },
-  { number: '03271000041278', balance: '12,98,041.57' },
+  { number: '03271000041278', balance: '13,34,660.57' },
 ]
 
 export default function DashboardScreen({ onNavigate }: DashboardScreenProps) {
