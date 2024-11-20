@@ -24,7 +24,7 @@ interface Account {
 const accounts: Account[] = [
   {
     number: '03271000009991',
-    balance: '2,23,232.62',
+    balance: '3,18,232.62',
     accountHolder: 'SANJAY TANEJA',
     branch: 'MULTAN NAGAR',
     ifsc: 'HDFC0004362',
@@ -49,6 +49,7 @@ interface Transaction {
 
 const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2024-11-17', narration: NEFT Cr-ICIC0SF0002-SURABHRUHELA-Sanjay Tan-HS92432564948642', refNo: 'HS92432564948642 ', withdrawalAmt: null, depositAmt: 95000.00, closingBalance: 318232.62 },
     { date: '2024-11-17', narration: 'NEFT Cr-ICIC0SF0002-SURABHRUHELA-Sanjay Tan-HS92432264753726', refNo: 'HS92432264753726', withdrawalAmt: null, depositAmt: 100.00, closingBalance: 223232.62 },    
     { date: '2024-11-07', narration: 'EMI 454727061 CHQ S4547270610241 0924454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 223332.62 },
     { date: '2024-11-07', narration: 'EMI 461561532 CHQ S4615615320081 0924461561532', refNo: '000000000000000', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 258616.62 },
