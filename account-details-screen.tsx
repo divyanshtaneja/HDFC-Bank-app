@@ -27,7 +27,7 @@ const accounts: { [key: string]: AccountDetails } = {
   },
   '03271000041278': {
     accountNumber: '03271000041278',
-    balance: '13,34,660.57',
+    balance: '12,98,041.57',
     accountHolder: 'JAYA TANEJA',
     branch: 'MULTAN NAGAR, DELHI',
     ifsc: 'HDFC0004362',
