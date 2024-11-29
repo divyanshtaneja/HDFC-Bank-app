@@ -24,7 +24,7 @@ interface Account {
 const accounts: Account[] = [
   {
     number: '03271000009991',
-    balance: '4,13,232.62',
+    balance: '5,13,885.62',
     accountHolder: 'SANJAY TANEJA',
     branch: 'MULTAN NAGAR',
     ifsc: 'HDFC0004362',
@@ -49,6 +49,10 @@ interface Transaction {
 
 const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2024-11-29', narration: 'NEFT Cr-ICIC0SF0002-SURABHRUHELA-Sanjay Tan-HS92433465704684', refNo: 'HS92433465704684', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 513885.62 },
+    { date: '2024-11-23', narration: 'UPI-Jio Prepaid Recharge-paytm-jiomobility@ptybl-YESB0PTMUPI-432800142322-UPI', refNo: '432800142322', withdrawalAmt: 1499.00, depositAmt: null, closingBalance: 413885.62 },
+    { date: '2024-11-22', narration: 'NEFT Cr-ICIC0SF0002-SURABHRUHELA-Sanjay Tan-HS92432765126238', refNo: 'HS92432765126238', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 415384.62 },
+    { date: '2024-11-22', narration: '50200000003402 19805123 HLIC INST', refNo: '00012837', withdrawalAmt: 97848.00, depositAmt: null, closingBalance: 315384.62 },  
     { date: '2024-11-21', narration: 'NEFT Cr-ICIC0SF0002-SURABHRUHELA-Sanjay Tan-HS92432665031873', refNo: 'HS92432665031873', withdrawalAmt: null, depositAmt: 95000.00, closingBalance: 413232.62 },  
     { date: '2024-11-20', narration: 'NEFT Cr-ICIC0SF0002-SURABHRUHELA-Sanjay Tan-HS92432564948642', refNo: 'HS92432564948642', withdrawalAmt: null, depositAmt: 95000.00, closingBalance: 318232.62 },    
     { date: '2024-11-17', narration: 'NEFT Cr-ICIC0SF0002-SURABHRUHELA-Sanjay Tan-HS92432264753726', refNo: 'HS92432264753726', withdrawalAmt: null, depositAmt: 100.00, closingBalance: 223232.62 },    
