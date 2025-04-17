@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 interface SideMenuProps {
   onClose: () => void
   onLogout: () => void
-  onNavigate: (screen: string) => void
+  onNavigate?: (screen: string) => void
 }
 
 export default function SideMenu({ onClose, onLogout, onNavigate }: SideMenuProps) {
@@ -23,7 +23,7 @@ export default function SideMenu({ onClose, onLogout, onNavigate }: SideMenuProp
       setLoading(true)
       setTimeout(() => {
         setLoading(false)
-        onNavigate('dashboard')
+        onNavigate?.('dashboard')
       }, 2000)
     }
   }

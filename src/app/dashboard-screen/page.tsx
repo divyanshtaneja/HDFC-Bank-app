@@ -159,6 +159,7 @@ export default function DashboardScreen() {
         <SideMenu
           onClose={() => setIsSideMenuOpen(false)}
           onLogout={handleLogout}
+          onNavigate={() => {}}
         />
       )}
     </div>
