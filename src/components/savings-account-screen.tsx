@@ -1,3 +1,4 @@
+// savings-account-screen.tsx
 'use client'
 
 import React, { useState, useEffect } from 'react'
@@ -47,51 +48,7 @@ interface Transaction {
   closingBalance: number
 }
 
-const transactionsData: { [key: string]: Transaction[] } = {
-  '03271000009991': [
-    { date: '2025-04-16', narration: 'IMPS-508115137565-PPF-55000000191609-HDFC-SANJAY TANEJA', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 150000.00, closingBalance: 1679604.62 },
-    { date: '2025-04-11', narration: 'IMPS-510102577485-DIVYANSH TANEJA-ICIC-xxxxxxxx6445-IMPS Transaction', refNo: '510102327385', withdrawalAmt: null, depositAmt: 75000.00, closingBalance: 1529604.62 },
-    { date: '2025-04-19', narration: 'IMPS-510012128567-Arun Mann-SBIN-xxxxxxx2216-P', refNo: '510012128567', withdrawalAmt: 500000.00, depositAmt: null, closingBalance: 1454604.62 },
-    { date: '2025-04-07', narration: 'IMPS-509713502979-Mrs SPRIHA NUPUR-SBIN-xxxxxxxxxxxxx8641-ReqPay', refNo: '509713502979', withdrawalAmt: null, depositAmt: 499500.00, closingBalance: 1954604.62 },
-    { date: '2025-04-07', narration: 'EMI 454727061 Chq S4547270610311 0425454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 1455104.62 },
-    { date: '2025-04-07', narration: 'IMPS-509713502979-Mrs SPRIHA NUPUR-SBIN-xxxxxxxxxxxxx8641-ReqPay', refNo: '509713502979', withdrawalAmt: null, depositAmt: 500.00, closingBalance: 1490398.62 },
-    { date: '2025-04-07', narration: 'EMI 461561532 Chq S4615615320151 0425461561532', refNo: '0000423625612847', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 1489898.62 },
-    { date: '2025-04-05', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000127392971', withdrawalAmt: null, depositAmt: 250000.00, closingBalance: 1530230.62 },
-    { date: '2025-04-05', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320870212', withdrawalAmt: null, depositAmt: 300000.00, closingBalance: 1280230.62 },
-    { date: '2025-04-04', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000389929580', withdrawalAmt: 1000000.00, depositAmt: null, closingBalance: 980230.62 },
-    { date: '2025-04-04', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000389929580', withdrawalAmt: 1000000.00, depositAmt: null, closingBalance: 1080230.62 },
-    { date: '2025-04-04', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000389929580', withdrawalAmt: 1000000.00, depositAmt: null, closingBalance: 1180230.62 },
-    { date: '2025-04-01', narration: 'Interest paid till 31-MAR-2025', refNo: 'AXOBR21479128454', withdrawalAmt: null, depositAmt: 5044.00, closingBalance: 1280230.62 },
-    { date: '2025-03-30', narration: 'UPI-Simran -simrankalra242@oksbi-SBIN0021275-102326865831-UPI', refNo: '102326865831', withdrawalAmt: 500.00, depositAmt: null, closingBalance: 1275186.62 },
-    { date: '2025-03-28', narration: 'IMPS-508716157771-PPF-55000000191609-Saving Scheme', refNo: '000000000000000', withdrawalAmt: 150000.00, depositAmt: null, closingBalance: 1275686.62 },
-    { date: '2025-03-26', narration: 'NEFT Cr-KKBK0000958-ASS CREATIONS PVT LTD-SANJAY TANEJA-KKBKN62025032605008480', refNo: 'KKBKN62025032605008480', withdrawalAmt: null, depositAmt: 68209.00, closingBalance: 1425686.62 },
-    { date: '2025-03-22', narration: 'IMPS-508115137565-PPF-55000000191609-HDFC-SANJAY TANEJA', refNo: '000000000000000', withdrawalAmt: 150000.00, depositAmt: null, closingBalance: 1357477.62 },
-    { date: '2025-03-21', narration: 'IB FUNDS TRANSFER DR-03271000041278-JAYA TANEJA', refNo: '000000000000000', withdrawalAmt: 100000.00, depositAmt: null, closingBalance: 1507477.62 },
-
-  ],
-  '03271000041278': [
-    { date: '2025-04-16', narration: 'RTGS Cr-IOBA0002259-I J MANOCHA,RAVINDER MANOCHA-JAYA TANEJA-IOBAR52025041600313124', refNo: '0000426018195789', withdrawalAmt: null, depositAmt: 460000.00, closingBalance: 1199064.57 },
-    { date: '2025-04-06', narration: '50200034218363-TPT-P-JV INDUSTRIES', refNo: '000189699159', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 7399064.57 },
-    { date: '2025-04-04', narration: '50200034218363-TPT-P-JV INDUSTRIES', refNo: '000189699159', withdrawalAmt: 100000.00, depositAmt: null, closingBalance: 689064.57 },
-    { date: '2025-04-04', narration: '50200034218363-TPT-P-JV INDUSTRIES', refNo: '000189699159', withdrawalAmt: 100000.00, depositAmt: null, closingBalance: 789064.57 },
-    { date: '2025-04-04', narration: '50200034218363-TPT-P-JV INDUSTRIES', refNo: '000189699159', withdrawalAmt: 100000.00, depositAmt: null, closingBalance: 889064.57 },
-    { date: '2025-04-02', narration: 'LOCKER RENT- BRN 4362-SMALL-B11-307 50500006535549', refNo: '0000000000000', withdrawalAmt: 5000.00, depositAmt: null, closingBalance: 989064.57 },
-    { date: '2025-04-02', narration: 'SGST-Small Lockers SC-NCB2609278716166', refNo: 'NCB2609278716166', withdrawalAmt: 450.00, depositAmt: null, closingBalance: 994064.57 },
-    { date: '2025-04-02', narration: 'CGST-Small Lockers SC-NCB2609278716166', refNo: 'NCB2609278716166', withdrawalAmt: 450.00, depositAmt: null, closingBalance: 994514.57 },
-    { date: '2025-04-02', narration: 'RTGS Cr-IOBA0002259-I J MANOCHA,RAVINDER MANOCHA-JAYA TANEJA-IOBAR52025040200354065', refNo: 'IOBAR52025040200354065', withdrawalAmt: null, depositAmt: 500000, closingBalance: 994964.57 },
-    { date: '2025-04-01', narration: 'Interest paid till 31-MAR-2025', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 1558, closingBalance: 494964.57 },
-    { date: '2025-03-22', narration: 'IMPS-508115137408-PPF-55000000191651-HDFC-JAYA TANEJA', refNo: '0000000000000', withdrawalAmt: 150000.00, depositAmt: null, closingBalance: 493406.81 },
-    { date: '2025-03-21', narration: 'IB FUNDS TRANSFER CR-03271000009991-SANJAY TANEJA', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 643406.81 },
-    { date: '2025-03-19', narration: '50100436924130-TPT-P-DIVYANSH TANEJA', refNo: '0000000594634754', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 543406.81 },
-    { date: '2025-03-19', narration: '50100436924130-TPT-JAYA TANEJA-DIVYANSH TANEJA', refNo: '000356340803', withdrawalAmt: 150000.00, depositAmt: null, closingBalance: 493406.81 },
-    { date: '2025-03-18', narration: 'RTGS Cr-IOBA0002259-I J MANOCHA,RAVINDER MANOCHA-JAYA TANEJA-IOBAR52025031800202279', refNo: 'IOBAR52025031800202279', withdrawalAmt: null, depositAmt: 500000.00, closingBalance: 643406.81 },
-    { date: '2025-01-25', narration: 'IB BILLPAY DR-HDFCZF-552365XXXXXX6971', refNo: 'IB25155851958076', withdrawalAmt: null, depositAmt: 30732.00, closingBalance: 143406.81 },
-    { date: '2025-01-06', narration: 'IB FUNDS TRANSFER DR-03271000009991 -SANJAY TANEJA', refNo: 'IB06000044554552', withdrawalAmt: 100000.00, depositAmt: null, closingBalance: 174138.81 },
-    { date: '2025-01-03', narration: 'IB BILLPAY DR-HDFCZF-552365XXXXXX6971', refNo: 'IB03123041452420', withdrawalAmt: 228213.00, depositAmt: null, closingBalance: 274138.81 },
-    { date: '2025-01-03', narration: 'FT - Cr - 03921000016208 - NARENDER KUMAR', refNo: '03921000016208', withdrawalAmt: null, depositAmt: 450000.00, closingBalance: 502351.57 },
-    { date: '2025-01-02', narration: '03921000016208-TPT-Ok-NARENDER KUMAR', refNo: '03921000016208', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 52351.57 },
-  ],
-}
+// Assume transactionsData is defined above or imported
 
 export default function SavingsAccountScreen({ onBack, selectedAccount, onAccountChange, onLogout }: SavingsAccountScreenProps) {
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
@@ -106,7 +63,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
     setVisibleTransactions(10)
   }, [selectedAccount])
 
-  const handleAccountSelect = (account: Account)  => {
+  const handleAccountSelect = (account: Account) => {
     onAccountChange(account.number)
     setShowAccountDropdown(false)
   }
@@ -127,9 +84,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
     onLogout()
   }
 
-  if (!currentAccount) {
-    return <div>Loading...</div>
-  }
+  if (!currentAccount) return <div>Loading...</div>
 
   if (showAccountDetails) {
     return (
@@ -144,28 +99,17 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
   return (
     <div className="flex flex-col h-screen bg-gray-100">
       <header className="bg-blue-700 text-white p-4 flex justify-between items-center">
-        <button onClick={onBack} aria-label="Go back">
-          <ChevronLeft size={24} />
-        </button>
+        <button onClick={onBack}><ChevronLeft size={24} /></button>
         <h1 className="text-xl font-bold">Savings Account</h1>
         <div className="flex space-x-4">
-          <Link href="https://www.hdfcbank.com" aria-label="Help">
-            <HelpCircle size={24} />
-          </Link>
-          <button onClick={handleLogout} aria-label="Logout">
-            <Power size={24} />
-          </button>
+          <Link href="https://www.hdfcbank.com"><HelpCircle size={24} /></Link>
+          <button onClick={handleLogout}><Power size={24} /></button>
         </div>
       </header>
 
       <div className="flex-grow overflow-auto">
         <div className="bg-white p-4 border-b relative">
-          <button 
-            className="w-full text-left flex justify-between items-center"
-            onClick={() => setShowAccountDropdown(!showAccountDropdown)}
-            aria-haspopup="listbox"
-            aria-expanded={showAccountDropdown}
-          >
+          <button className="w-full text-left flex justify-between items-center" onClick={() => setShowAccountDropdown(!showAccountDropdown)}>
             <div>
               <h2 className="font-semibold text-black">Savings Account</h2>
               <p className="text-black">{currentAccount.number}</p>
@@ -173,15 +117,9 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
             <ChevronDown size={20} className="text-blue-500" />
           </button>
           {showAccountDropdown && (
-            <div className="absolute top-full left-0 right-0 bg-white shadow-md z-10" role="listbox">
-              {accounts.map((account) => (
-                <button
-                  key={account.number}
-                  className="w-full text-left p-2 hover:bg-gray-100 text-black"
-                  onClick={() => handleAccountSelect(account)}
-                  role="option"
-                  aria-selected={account.number === currentAccount.number}
-                >
+            <div className="absolute top-full left-0 right-0 bg-white shadow-md z-10">
+              {accounts.map(account => (
+                <button key={account.number} className="w-full text-left p-2 hover:bg-gray-100 text-black" onClick={() => handleAccountSelect(account)}>
                   {account.number}
                 </button>
               ))}
@@ -196,10 +134,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
         </div>
 
         <div className="bg-white p-4 border-b">
-          <button 
-            className="text-blue-500 flex items-center w-full justify-between"
-            onClick={handleShowDetails}
-          >
+          <button className="text-blue-500 flex items-center w-full justify-between" onClick={handleShowDetails}>
             <span>Show Account Details</span>
             <ChevronDown size={20} className="ml-2" />
           </button>
@@ -213,10 +148,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
         </div>
 
         <div className="bg-white p-4 border-b">
-          <button 
-            className="text-blue-500 flex items-center"
-            onClick={() => setIsStatementExpanded(!isStatementExpanded)}
-          >
+          <button className="text-blue-500 flex items-center" onClick={() => setIsStatementExpanded(!isStatementExpanded)}>
             <span className="text-lg font-semibold border-b border-black pb-2">Statement</span>
             <ChevronDown size={20} className={`transform ${isStatementExpanded ? 'rotate-180' : ''} ml-2`} />
           </button>
@@ -228,18 +160,16 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
               </div>
               {transactionsData[currentAccount.number].slice(0, visibleTransactions).map((transaction, index) => (
                 <div key={index} className="border-b py-2">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-grow">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-start">
+                    <div className="flex flex-col">
                       <p className="font-semibold text-gray-600">{formatDate(new Date(transaction.date))}</p>
-                      <p className="text-sm text-gray-600">{transaction.narration}</p>
+                      <p className="text-sm text-gray-600 break-words">{transaction.narration}</p>
                       <p className="text-xs text-gray-500">Ref Num: {transaction.refNo}</p>
                     </div>
-                    <div className="flex flex-col items-end">
-                      <div className="flex items-center">
+                    <div className="flex flex-col items-end sm:items-end text-right">
+                      <div className="flex items-center justify-end">
                         <span className="font-semibold text-blue-500">
-                          {formatIndianCurrency(transaction.withdrawalAmt !== null 
-                              ? transaction.withdrawalAmt
-                              : transaction.depositAmt!)}
+                          {formatIndianCurrency(transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!)}
                         </span>
                         {transaction.withdrawalAmt !== null ? (
                           <ArrowUpLeft size={16} className="text-red-500 ml-1" />
@@ -253,10 +183,7 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
                 </div>
               ))}
               {transactionsData[currentAccount.number].length > 10 && (
-                <button 
-                  className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded"
-                  onClick={handleSeeMore}
-                >
+                <button className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded" onClick={handleSeeMore}>
                   {visibleTransactions === 10 ? 'See More' : 'See Less'}
                 </button>
               )}
