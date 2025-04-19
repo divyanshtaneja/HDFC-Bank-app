@@ -92,19 +92,17 @@ export default function HomeScreen() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#00204a] to-[#003366] text-black overflow-hidden">
-      <div className="w-full max-w-md mx-auto">
-        <Image
-          src="/logo.jpg"
-          alt="Custom Logo"
-          width={256}
-          height={80}
-          className="w-full h-auto object-contain"
-        />
-      </div>
+    <div className="relative w-[390px] h-[844px] mx-auto overflow-hidden">
+      <Image
+        src="/CB8BA8CA-7725-4F6F-ACEB-385F2A50EDD9.jpeg"
+        alt="Login Background"
+        fill
+        className="object-cover"
+        priority
+      />
 
-      <main className="flex-grow flex items-center justify-center px-4 py-0">
-        <div className="bg-white w-full max-w-md aspect-square flex flex-col justify-center rounded-none px-4 py-6 shadow-xl">
+      <div className="absolute top-[22%] left-1/2 -translate-x-1/2 w-[350px] px-4">
+        <div className="bg-white rounded-2xl p-6 shadow-lg">
           <div className="flex flex-col items-center space-y-2">
             <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
               <Image
@@ -115,7 +113,7 @@ export default function HomeScreen() {
                 className="rounded-full"
               />
             </div>
-            <h2 className="text-lg font-bold">Welcome, SANJAY TANEJA</h2>
+            <h2 className="text-lg font-semibold text-gray-800">Welcome, SANJAY TANEJA</h2>
             <p className="text-sm text-gray-500">Log in with</p>
           </div>
 
@@ -197,16 +195,6 @@ export default function HomeScreen() {
             <span className="cursor-pointer">Privacy Policy</span>
           </div>
         </div>
-      </main>
-
-      <div className="w-full max-w-md mx-auto">
-        <Image
-          src="/footer-image.jpg"
-          alt="Footer Image"
-          width={256}
-          height={80}
-          className="w-full h-auto object-contain"
-        />
       </div>
     </div>
   )
