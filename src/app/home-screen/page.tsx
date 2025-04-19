@@ -11,21 +11,29 @@ import React, {
 } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { Fingerprint } from 'lucide-react'
 
 export default function HomeScreen() {
   const router = useRouter()
 
-  const [activeTab, setActiveTab] = useState<'pin' | 'password'>('pin')
+  const [activeTab, setActiveTab] = useState<'pin' | 'password' | 'biometric'>('pin')
   const [pin, setPin] = useState<string[]>(['', '', '', ''])
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [biometricSupported, setBiometricSupported] = useState(false)
 
   const pinInputRefs = useMemo(
     (): RefObject<HTMLInputElement>[] =>
       Array.from({ length: 4 }, () => createRef<HTMLInputElement>()),
     []
   )
+
+  useEffect(() => {
+    if (window.PublicKeyCredential) {
+      setBiometricSupported(true)
+    }
+  }, [])
 
   useEffect(() => {
     const validPins = ['0019', '2611', '1972']
@@ -66,51 +74,67 @@ export default function HomeScreen() {
     }
   }
 
+  const handleBiometricLogin = async () => {
+    try {
+      const result = await navigator.credentials.get({
+        publicKey: {
+          challenge: new Uint8Array(32),
+          timeout: 60000,
+          userVerification: 'preferred',
+        },
+      })
+      if (result) {
+        router.push('/dashboard-screen')
+      }
+    } catch (err) {
+      console.error('Biometric login failed:', err)
+    }
+  }
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#001639] text-black overflow-hidden">
-      <div className="pt-4 px-4 w-full max-w-md mx-auto">
-        <div className="w-full">
-          <Image
-            src="/logo.jpg"
-            alt="Custom Logo"
-            layout="responsive"
-            width={256}
-            height={80}
-            className="object-contain"
-          />
-        </div>
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#00204a] to-[#003366] text-black overflow-hidden">
+      <div className="w-full max-w-md mx-auto">
+        <Image
+          src="/logo.jpg"
+          alt="Custom Logo"
+          width={256}
+          height={80}
+          className="w-full h-auto object-contain"
+        />
       </div>
 
-      <main className="flex-grow flex items-center justify-center px-4 py-2">
-        <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-4 space-y-4 sm:p-6 sm:space-y-6">
+      <main className="flex-grow flex items-center justify-center px-4 py-0">
+        <div className="bg-white w-full max-w-md aspect-square flex flex-col justify-center rounded-none px-4 py-6 shadow-xl">
           <div className="flex flex-col items-center space-y-2">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/profile-picture-l1QQKCqiCGGufjnRBkjs29e3EjKXKX.webp"
-              alt="Profile"
-              width={60}
-              height={60}
-              className="rounded-full"
-            />
+            <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/profile-picture-l1QQKCqiCGGufjnRBkjs29e3EjKXKX.webp"
+                alt="Profile"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+            </div>
             <h2 className="text-lg font-bold">Welcome, SANJAY TANEJA</h2>
             <p className="text-sm text-gray-500">Log in with</p>
           </div>
 
-          <div className="flex border-b border-gray-300 text-sm">
-            {['pin', 'password'].map((tab) => (
+          <div className="flex border border-blue-200 rounded-lg mt-4 overflow-hidden text-sm">
+            {['pin', 'password', biometricSupported ? 'biometric' : ''].filter(Boolean).map((tab) => (
               <button
                 key={tab}
                 className={`flex-1 py-2 font-medium text-center transition-all duration-200 ${
-                  activeTab === tab ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'
+                  activeTab === tab ? 'text-white bg-blue-600' : 'text-blue-600 bg-white'
                 }`}
-                onClick={() => setActiveTab(tab as 'pin' | 'password')}
+                onClick={() => setActiveTab(tab as 'pin' | 'password' | 'biometric')}
               >
-                {tab === 'pin' ? '4-digit PIN' : 'Password'}
+                {tab === 'pin' ? '4-digit PIN' : tab === 'password' ? 'Password' : 'Face ID'}
               </button>
             ))}
           </div>
 
           {activeTab === 'pin' && (
-            <div className="space-y-2">
+            <div className="space-y-2 mt-6">
               <div className="flex justify-between gap-2">
                 {pin.map((value, index) => (
                   <input
@@ -137,7 +161,7 @@ export default function HomeScreen() {
           )}
 
           {activeTab === 'password' && (
-            <div className="space-y-2">
+            <div className="space-y-2 mt-6">
               <input
                 type="password"
                 placeholder="Enter your password"
@@ -149,27 +173,41 @@ export default function HomeScreen() {
             </div>
           )}
 
+          {activeTab === 'biometric' && (
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={handleBiometricLogin}
+                className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white font-medium py-3 rounded-lg shadow"
+              >
+                <Fingerprint size={20} /> Log in with Face ID
+              </button>
+            </div>
+          )}
+
+          <hr className="my-6 border-t" />
+
           <p className="text-xs text-center text-gray-600">
             Not SANJAY TANEJA?{' '}
             <span className="text-blue-600 cursor-pointer">Add Another User</span>
           </p>
 
-          <div className="flex justify-between text-[10px] text-blue-600">
+          <div className="flex justify-center gap-2 text-[10px] text-blue-600 mt-2">
             <span className="cursor-pointer">Secure Banking</span>
+            <span>|</span>
             <span className="cursor-pointer">Privacy Policy</span>
           </div>
         </div>
       </main>
 
-      <footer className="p-3 w-full max-w-md mx-auto">
+      <div className="w-full max-w-md mx-auto">
         <Image
           src="/footer-image.jpg"
           alt="Footer Image"
-          width={400}
-          height={100}
-          className="mx-auto object-contain"
+          width={256}
+          height={80}
+          className="w-full h-auto object-contain"
         />
-      </footer>
+      </div>
     </div>
   )
 }

@@ -162,17 +162,17 @@ export default function SavingsAccountScreen({
 
         <div className="bg-white p-4 border-b">
           <button
-            className="text-blue-500 flex items-center"
+            className="text-blue-600 text-lg font-semibold flex items-center w-full justify-between border-b border-black pb-2"
             onClick={() => setIsStatementExpanded(!isStatementExpanded)}
           >
-            <span className="text-lg font-semibold border-b border-black pb-2">Statement</span>
+            <span>Statement</span>
             <ChevronDown size={20} className={`transform ${isStatementExpanded ? 'rotate-180' : ''} ml-2`} />
           </button>
 
           {isStatementExpanded && (
             <div className="mt-4">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-black border-b border-blue-400 w-full pb-2">
+                <h3 className="text-base font-semibold text-black">
                   Recent Transactions
                 </h3>
                 <Search size={20} className="text-blue-500" />
@@ -184,31 +184,31 @@ export default function SavingsAccountScreen({
                 transactionsData[currentAccount.number]
                   .slice(0, visibleTransactions)
                   .map((transaction, index) => (
-                    <div key={index} className="border-b py-2">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-start">
-                        <div className="flex flex-col">
-                          <p className="font-semibold text-gray-600">{formatDate(new Date(transaction.date))}</p>
-                          <p className="text-sm text-gray-600 break-words">{transaction.narration}</p>
-                          <p className="text-xs text-gray-500">Ref Num: {transaction.refNo}</p>
-                        </div>
-                        <div className="flex flex-col items-end text-right">
-                          <div className="flex items-center justify-end">
-                            <span className="font-semibold text-blue-500">
-                              {formatIndianCurrency(
-                                transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!
-                              )}
-                            </span>
-                            {transaction.withdrawalAmt !== null ? (
-                              <ArrowUpLeft size={16} className="text-red-500 ml-1" />
-                            ) : (
-                              <ArrowDownRight size={16} className="text-green-500 ml-1" />
-                            )}
-                          </div>
-                          <p className="text-sm text-gray-600 mt-1">
-                            Balance: {formatIndianCurrency(transaction.closingBalance)}
-                          </p>
-                        </div>
+                    <div key={index} className="py-3 border-b">
+                      <p className="font-semibold text-sm text-gray-800">
+                        {formatDate(new Date(transaction.date))}
+                      </p>
+                      <p className="text-sm text-gray-700 break-words mt-0.5">
+                        {transaction.narration}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        Ref Num: {transaction.refNo}
+                      </p>
+                      <div className="flex justify-between items-center mt-1">
+                        <p className="text-blue-600 font-bold text-base">
+                          {formatIndianCurrency(
+                            transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!
+                          )}
+                        </p>
+                        {transaction.withdrawalAmt !== null ? (
+                          <ArrowUpLeft size={16} className="text-red-500" />
+                        ) : (
+                          <ArrowDownRight size={16} className="text-green-500" />
+                        )}
                       </div>
+                      <p className="text-xs text-gray-600 mt-1">
+                        Balance: {formatIndianCurrency(transaction.closingBalance)}
+                      </p>
                     </div>
                   ))
               )}

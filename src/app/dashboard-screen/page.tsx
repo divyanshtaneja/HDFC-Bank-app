@@ -123,7 +123,7 @@ export default function DashboardScreen() {
                 <h3 className="text-lg text-blue-600 font-semibold">Saving Scheme Account</h3>
                 <ChevronRight className="text-blue-600" />
               </div>
-              <p className="text-2xl font-bold text-blue-600">{formatIndianCurrency('15,54,502.00')}</p>
+              <p className="text-2xl font-bold text-blue-600">{formatIndianCurrency('17,04,502.00')}</p>
             </button>
           </div>
           <button onClick={() => setShowOverview(true)} className="text-blue-600 font-semibold">
