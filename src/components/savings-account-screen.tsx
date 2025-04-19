@@ -185,30 +185,36 @@ export default function SavingsAccountScreen({
                   .slice(0, visibleTransactions)
                   .map((transaction, index) => (
                     <div key={index} className="py-3 border-b">
-                      <p className="font-semibold text-sm text-gray-800">
-                        {formatDate(new Date(transaction.date))}
-                      </p>
-                      <p className="text-sm text-gray-700 break-words mt-0.5">
-                        {transaction.narration}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        Ref Num: {transaction.refNo}
-                      </p>
-                      <div className="flex justify-between items-center mt-1">
-                        <p className="text-blue-600 font-bold text-base">
-                          {formatIndianCurrency(
-                            transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!
-                          )}
-                        </p>
-                        {transaction.withdrawalAmt !== null ? (
-                          <ArrowUpLeft size={16} className="text-red-500" />
-                        ) : (
-                          <ArrowDownRight size={16} className="text-green-500" />
-                        )}
+                      <div className="flex justify-between">
+                        <div className="flex-1 pr-2 min-w-0">
+                          <p className="font-semibold text-sm text-gray-800">
+                            {formatDate(new Date(transaction.date))}
+                          </p>
+                          <p className="text-sm text-gray-700 break-words whitespace-pre-wrap">
+                            {transaction.narration}
+                          </p>
+                          <p className="text-xs text-gray-500 mt-0.5">
+                            Ref Num: {transaction.refNo}
+                          </p>
+                        </div>
+                        <div className="flex flex-col items-end">
+                          <div className="flex items-center">
+                            <p className="text-blue-600 font-bold text-base">
+                              {formatIndianCurrency(
+                                transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!
+                              )}
+                            </p>
+                            {transaction.withdrawalAmt !== null ? (
+                              <ArrowUpLeft size={16} className="text-red-500 ml-1" />
+                            ) : (
+                              <ArrowDownRight size={16} className="text-green-500 ml-1" />
+                            )}
+                          </div>
+                          <p className="text-xs text-gray-600">
+                            Balance: {formatIndianCurrency(transaction.closingBalance)}
+                          </p>
+                        </div>
                       </div>
-                      <p className="text-xs text-gray-600 mt-1">
-                        Balance: {formatIndianCurrency(transaction.closingBalance)}
-                      </p>
                     </div>
                   ))
               )}
