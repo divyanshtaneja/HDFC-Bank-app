@@ -2,10 +2,15 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { ChevronLeft, HelpCircle, Power, ChevronDown, ChevronRight, Share2, ArrowUpLeft, ArrowDownRight, Search } from 'lucide-react'
+import {
+  ChevronLeft, HelpCircle, Power,
+  ChevronDown, Share2,
+  ArrowUpLeft, ArrowDownRight, Search
+} from 'lucide-react'
 import Link from 'next/link'
 import AccountDetailsScreen from './account-details-screen'
 import { formatIndianCurrency, formatDate } from '../utils/formatters'
+import { transactionsData } from '../mock/transactions'
 
 interface SavingsAccountScreenProps {
   onBack: () => void
@@ -36,21 +41,15 @@ const accounts: Account[] = [
     accountHolder: 'JAYA TANEJA',
     branch: 'MULTAN NAGAR, DELHI',
     ifsc: 'HDFC0004362',
-  },
+  }
 ]
 
-interface Transaction {
-  date: string
-  narration: string
-  refNo: string
-  withdrawalAmt: number | null
-  depositAmt: number | null
-  closingBalance: number
-}
-
-// Assume transactionsData is defined above or imported
-
-export default function SavingsAccountScreen({ onBack, selectedAccount, onAccountChange, onLogout }: SavingsAccountScreenProps) {
+export default function SavingsAccountScreen({
+  onBack,
+  selectedAccount,
+  onAccountChange,
+  onLogout
+}: SavingsAccountScreenProps) {
   const [isStatementExpanded, setIsStatementExpanded] = useState(false)
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [visibleTransactions, setVisibleTransactions] = useState(10)
@@ -109,7 +108,10 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
 
       <div className="flex-grow overflow-auto">
         <div className="bg-white p-4 border-b relative">
-          <button className="w-full text-left flex justify-between items-center" onClick={() => setShowAccountDropdown(!showAccountDropdown)}>
+          <button
+            className="w-full text-left flex justify-between items-center"
+            onClick={() => setShowAccountDropdown(!showAccountDropdown)}
+          >
             <div>
               <h2 className="font-semibold text-black">Savings Account</h2>
               <p className="text-black">{currentAccount.number}</p>
@@ -119,7 +121,11 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
           {showAccountDropdown && (
             <div className="absolute top-full left-0 right-0 bg-white shadow-md z-10">
               {accounts.map(account => (
-                <button key={account.number} className="w-full text-left p-2 hover:bg-gray-100 text-black" onClick={() => handleAccountSelect(account)}>
+                <button
+                  key={account.number}
+                  className="w-full text-left p-2 hover:bg-gray-100 text-black"
+                  onClick={() => handleAccountSelect(account)}
+                >
                   {account.number}
                 </button>
               ))}
@@ -129,12 +135,19 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
 
         <div className="bg-white p-4 border-b">
           <p className="text-gray-600">Available Balance</p>
-          <p className="text-4xl font-bold text-blue-500">{formatIndianCurrency(currentAccount.balance)}</p>
-          <p className="text-sm text-gray-500">(Account Balance + Overdraft - Hold)</p>
+          <p className="text-4xl font-bold text-blue-500">
+            {formatIndianCurrency(currentAccount.balance)}
+          </p>
+          <p className="text-sm text-gray-500">
+            (Account Balance + Overdraft - Hold)
+          </p>
         </div>
 
         <div className="bg-white p-4 border-b">
-          <button className="text-blue-500 flex items-center w-full justify-between" onClick={handleShowDetails}>
+          <button
+            className="text-blue-500 flex items-center w-full justify-between"
+            onClick={handleShowDetails}
+          >
             <span>Show Account Details</span>
             <ChevronDown size={20} className="ml-2" />
           </button>
@@ -148,70 +161,68 @@ export default function SavingsAccountScreen({ onBack, selectedAccount, onAccoun
         </div>
 
         <div className="bg-white p-4 border-b">
-          <button className="text-blue-500 flex items-center" onClick={() => setIsStatementExpanded(!isStatementExpanded)}>
+          <button
+            className="text-blue-500 flex items-center"
+            onClick={() => setIsStatementExpanded(!isStatementExpanded)}
+          >
             <span className="text-lg font-semibold border-b border-black pb-2">Statement</span>
             <ChevronDown size={20} className={`transform ${isStatementExpanded ? 'rotate-180' : ''} ml-2`} />
           </button>
+
           {isStatementExpanded && (
             <div className="mt-4">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-black border-b border-blue-400 w-full pb-2">Recent Transactions</h3>
+                <h3 className="text-lg font-semibold text-black border-b border-blue-400 w-full pb-2">
+                  Recent Transactions
+                </h3>
                 <Search size={20} className="text-blue-500" />
               </div>
-              {transactionsData[currentAccount.number].slice(0, visibleTransactions).map((transaction, index) => (
-                <div key={index} className="border-b py-2">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-start">
-                    <div className="flex flex-col">
-                      <p className="font-semibold text-gray-600">{formatDate(new Date(transaction.date))}</p>
-                      <p className="text-sm text-gray-600 break-words">{transaction.narration}</p>
-                      <p className="text-xs text-gray-500">Ref Num: {transaction.refNo}</p>
-                    </div>
-                    <div className="flex flex-col items-end sm:items-end text-right">
-                      <div className="flex items-center justify-end">
-                        <span className="font-semibold text-blue-500">
-                          {formatIndianCurrency(transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!)}
-                        </span>
-                        {transaction.withdrawalAmt !== null ? (
-                          <ArrowUpLeft size={16} className="text-red-500 ml-1" />
-                        ) : (
-                          <ArrowDownRight size={16} className="text-green-500 ml-1" />
-                        )}
+
+              {transactionsData[currentAccount.number]?.length === 0 ? (
+                <p className="text-center text-gray-500 py-4">No transactions found.</p>
+              ) : (
+                transactionsData[currentAccount.number]
+                  .slice(0, visibleTransactions)
+                  .map((transaction, index) => (
+                    <div key={index} className="border-b py-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-start">
+                        <div className="flex flex-col">
+                          <p className="font-semibold text-gray-600">{formatDate(new Date(transaction.date))}</p>
+                          <p className="text-sm text-gray-600 break-words">{transaction.narration}</p>
+                          <p className="text-xs text-gray-500">Ref Num: {transaction.refNo}</p>
+                        </div>
+                        <div className="flex flex-col items-end text-right">
+                          <div className="flex items-center justify-end">
+                            <span className="font-semibold text-blue-500">
+                              {formatIndianCurrency(
+                                transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!
+                              )}
+                            </span>
+                            {transaction.withdrawalAmt !== null ? (
+                              <ArrowUpLeft size={16} className="text-red-500 ml-1" />
+                            ) : (
+                              <ArrowDownRight size={16} className="text-green-500 ml-1" />
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-600 mt-1">
+                            Balance: {formatIndianCurrency(transaction.closingBalance)}
+                          </p>
+                        </div>
                       </div>
-                      <p className="text-sm text-gray-600 mt-1">Balance: {formatIndianCurrency(transaction.closingBalance)}</p>
                     </div>
-                  </div>
-                </div>
-              ))}
-              {transactionsData[currentAccount.number].length > 10 && (
-                <button className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded" onClick={handleSeeMore}>
+                  ))
+              )}
+
+              {transactionsData[currentAccount.number]?.length > 10 && (
+                <button
+                  className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded"
+                  onClick={handleSeeMore}
+                >
                   {visibleTransactions === 10 ? 'See More' : 'See Less'}
                 </button>
               )}
             </div>
           )}
-        </div>
-
-        <div className="bg-white p-4 border-b">
-          <h3 className="text-lg font-semibold mb-2 text-black">Protect Against Insufficient Funds</h3>
-          <p className="text-gray-600 mb-2">
-            Connect your other Current/ Savings accounts/Deposits to this account so that you will always be protected against insufficient funds or bounced cheques.
-          </p>
-          <button className="text-blue-500 flex items-center justify-between w-full">
-            <span>Set up now</span>
-            <ChevronRight size={20} />
-          </button>
-        </div>
-
-        <div className="bg-white p-4">
-          <h3 className="text-lg font-semibold mb-2 text-black">Actions</h3>
-          <div className="space-y-4">
-            {['Open Fixed Deposit', 'Open Recurring Deposit', 'Open Tax Saver Deposit', 'Manage Alerts', 'Request Cheque Book'].map((action, index) => (
-              <button key={index} className="text-blue-500 flex items-center justify-between w-full">
-                <span>{action}</span>
-                <ChevronRight size={20} />
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </div>
