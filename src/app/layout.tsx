@@ -32,8 +32,8 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="preload" as="image" href="/android-chrome-192x192.png" />
-        <link rel="preload" as="image" href="/android-chrome-512x512.png" />
+        <link rel="preload" as="image" href="/apple-touch-icon-192x192.png" />
+        <link rel="preload" as="image" href="/apple-touch-icon-512x512.png" />
         <meta name="theme-color" content="#002D62" />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
