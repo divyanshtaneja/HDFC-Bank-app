@@ -92,7 +92,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <div className="relative w-[390px] h-[844px] mx-auto overflow-hidden">
+    <div className="relative w-[390px] h-[844px] mx-auto overflow-hidden bg-[#002D62]">
       <Image
         src="/CB8BA8CA-7725-4F6F-ACEB-385F2A50EDD9.jpeg"
         alt="Login Background"
@@ -139,11 +139,12 @@ export default function HomeScreen() {
                     key={index}
                     ref={pinInputRefs[index]}
                     type="password"
+                    inputMode="numeric"
                     maxLength={1}
                     value={value}
                     onChange={(e) => handlePinChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
-                    className="w-12 h-12 text-center text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-12 h-12 text-center text-xl text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                     disabled={isLoading}
                   />
                 ))}
