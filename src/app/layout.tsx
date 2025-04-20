@@ -27,13 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/apple-touch-icon-192x192.png" type="image/png" />
         <link rel="preload" as="image" href="/apple-touch-icon-192x192.png" />
-        <link rel="preload" as="image" href="/apple-touch-icon-512x512.png" />
         <meta name="theme-color" content="#002D62" />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
