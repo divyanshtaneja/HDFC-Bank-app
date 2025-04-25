@@ -10,7 +10,7 @@ import {
 import Link from 'next/link'
 import AccountDetailsScreen from './account-details-screen'
 import { formatIndianCurrency, formatDate } from '../utils/formatters'
-import { getTransactions } from '../your-updated-path/transactions'
+import { getTransactions } from './transactions'
 
 interface Transaction {
   date: string
