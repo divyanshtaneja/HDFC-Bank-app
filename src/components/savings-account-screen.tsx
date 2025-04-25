@@ -10,7 +10,16 @@ import {
 import Link from 'next/link'
 import AccountDetailsScreen from './account-details-screen'
 import { formatIndianCurrency, formatDate } from '../utils/formatters'
-import { transactionsData } from '../mock/transactions'
+import { getTransactions } from '../your-updated-path/transactions'
+
+interface Transaction {
+  date: string
+  narration: string
+  refNo: string
+  withdrawalAmt: number | null
+  depositAmt: number | null
+  closingBalance: number
+}
 
 interface SavingsAccountScreenProps {
   onBack: () => void
@@ -37,7 +46,7 @@ const accounts: Account[] = [
   },
   {
     number: '03271000041278',
-    balance: '16,99,064.57',  
+    balance: '16,99,064.57',
     accountHolder: 'JAYA TANEJA',
     branch: 'MULTAN NAGAR, DELHI',
     ifsc: 'HDFC0004362',
@@ -55,6 +64,9 @@ export default function SavingsAccountScreen({
   const [visibleTransactions, setVisibleTransactions] = useState(10)
   const [currentAccount, setCurrentAccount] = useState<Account | null>(null)
   const [showAccountDetails, setShowAccountDetails] = useState(false)
+  const [transactions, setTransactions] = useState<Transaction[]>([])
+  const [loadingTransactions, setLoadingTransactions] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const account = accounts.find(acc => acc.number === selectedAccount)
@@ -62,13 +74,32 @@ export default function SavingsAccountScreen({
     setVisibleTransactions(10)
   }, [selectedAccount])
 
+  useEffect(() => {
+    if (!currentAccount) return
+
+    const fetchTransactions = async () => {
+      setLoadingTransactions(true)
+      setError(null)
+      try {
+        const data = await getTransactions(currentAccount.number)
+        setTransactions(data)
+      } catch (err) {
+        setError('Failed to load transactions.')
+      } finally {
+        setLoadingTransactions(false)
+      }
+    }
+
+    fetchTransactions()
+  }, [currentAccount])
+
   const handleAccountSelect = (account: Account) => {
     onAccountChange(account.number)
     setShowAccountDropdown(false)
   }
 
   const handleSeeMore = () => {
-    setVisibleTransactions(prev => prev === 10 ? 20 : 10)
+    setVisibleTransactions(prev => (prev === 10 ? 20 : 10))
   }
 
   const handleShowDetails = () => {
@@ -83,7 +114,7 @@ export default function SavingsAccountScreen({
     onLogout()
   }
 
-  if (!currentAccount) return <div>Loading...</div>
+  if (!currentAccount) return <div>Loading account...</div>
 
   if (showAccountDetails) {
     return (
@@ -178,48 +209,50 @@ export default function SavingsAccountScreen({
                 <Search size={20} className="text-blue-500" />
               </div>
 
-              {transactionsData[currentAccount.number]?.length === 0 ? (
+              {loadingTransactions ? (
+                <p className="text-center text-gray-500 py-4">Loading transactions...</p>
+              ) : error ? (
+                <p className="text-center text-red-500 py-4">{error}</p>
+              ) : transactions.length === 0 ? (
                 <p className="text-center text-gray-500 py-4">No transactions found.</p>
               ) : (
-                transactionsData[currentAccount.number]
-                  .slice(0, visibleTransactions)
-                  .map((transaction, index) => (
-                    <div key={index} className="py-3 border-b">
-                      <div className="flex justify-between">
-                        <div className="flex-1 pr-2 min-w-0">
-                          <p className="font-semibold text-sm text-gray-800">
-                            {formatDate(new Date(transaction.date))}
-                          </p>
-                          <p className="text-sm text-gray-700 break-words whitespace-pre-wrap">
-                            {transaction.narration}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-0.5">
-                            Ref Num: {transaction.refNo}
-                          </p>
-                        </div>
-                        <div className="flex flex-col items-end">
-                          <div className="flex items-center">
-                            <p className="text-blue-600 font-bold text-base">
-                              {formatIndianCurrency(
-                                transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!
-                              )}
-                            </p>
-                            {transaction.withdrawalAmt !== null ? (
-                              <ArrowUpLeft size={16} className="text-red-500 ml-1" />
-                            ) : (
-                              <ArrowDownRight size={16} className="text-green-500 ml-1" />
+                transactions.slice(0, visibleTransactions).map((transaction, index) => (
+                  <div key={index} className="py-3 border-b">
+                    <div className="flex justify-between">
+                      <div className="flex-1 pr-2 min-w-0">
+                        <p className="font-semibold text-sm text-gray-800">
+                          {formatDate(new Date(transaction.date))}
+                        </p>
+                        <p className="text-sm text-gray-700 break-words whitespace-pre-wrap">
+                          {transaction.narration}
+                        </p>
+                        <p className="text-xs text-gray-500 mt-0.5">
+                          Ref Num: {transaction.refNo}
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end">
+                        <div className="flex items-center">
+                          <p className="text-blue-600 font-bold text-base">
+                            {formatIndianCurrency(
+                              transaction.withdrawalAmt !== null ? transaction.withdrawalAmt : transaction.depositAmt!
                             )}
-                          </div>
-                          <p className="text-xs text-gray-600">
-                            Balance: {formatIndianCurrency(transaction.closingBalance)}
                           </p>
+                          {transaction.withdrawalAmt !== null ? (
+                            <ArrowUpLeft size={16} className="text-red-500 ml-1" />
+                          ) : (
+                            <ArrowDownRight size={16} className="text-green-500 ml-1" />
+                          )}
                         </div>
+                        <p className="text-xs text-gray-600">
+                          Balance: {formatIndianCurrency(transaction.closingBalance)}
+                        </p>
                       </div>
                     </div>
-                  ))
+                  </div>
+                ))
               )}
 
-              {transactionsData[currentAccount.number]?.length > 10 && (
+              {transactions.length > 10 && (
                 <button
                   className="w-full text-blue-500 mt-4 py-2 border border-blue-500 rounded"
                   onClick={handleSeeMore}
