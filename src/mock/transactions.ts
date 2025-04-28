@@ -11,9 +11,9 @@ export interface Transaction {
 
 export const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
-    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 90000.00, closingBalance: 2914570.62 },
-    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320452342', withdrawalAmt: null, depositAmt: 70000.00, closingBalance: 2824570.62 },
-    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320870215', withdrawalAmt: null, depositAmt: 1000000.00, closingBalance: 2854570.62 },
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 90000.00, closingBalance: 3014570.62 },
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320452342', withdrawalAmt: null, depositAmt: 70000.00, closingBalance: 2924570.62 },
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320870215', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 2854570.62 },
     { date: '2025-04-25', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320870212', withdrawalAmt: null, depositAmt: 1000000.00, closingBalance: 2754570.62 },
     { date: '2025-04-24', narration: 'NEFT Cr-KKBK0000958-ASS CREATIONS PVT LTD-SANJAY TANEJA-KKBKN62025042445439328', refNo: 'KKBKN62025042445439328 ', withdrawalAmt: null, depositAmt: 74966.00, closingBalance: 1754570.62 },
     { date: '2025-04-16', narration: 'IMPS-508115137565-PPF-55000000191609-HDFC-SANJAY TANEJA', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 150000.00, closingBalance: 1679604.62 },
