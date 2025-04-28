@@ -11,6 +11,9 @@ export interface Transaction {
 
 export const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 90000.00, closingBalance: 2914570.62 },
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320452342', withdrawalAmt: null, depositAmt: 70000.00, closingBalance: 2824570.62 },
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320870215', withdrawalAmt: null, depositAmt: 1000000.00, closingBalance: 2854570.62 },
     { date: '2025-04-25', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320870212', withdrawalAmt: null, depositAmt: 1000000.00, closingBalance: 2754570.62 },
     { date: '2025-04-24', narration: 'NEFT Cr-KKBK0000958-ASS CREATIONS PVT LTD-SANJAY TANEJA-KKBKN62025042445439328', refNo: 'KKBKN62025042445439328 ', withdrawalAmt: null, depositAmt: 74966.00, closingBalance: 1754570.62 },
     { date: '2025-04-16', narration: 'IMPS-508115137565-PPF-55000000191609-HDFC-SANJAY TANEJA', refNo: '000000000000000', withdrawalAmt: null, depositAmt: 150000.00, closingBalance: 1679604.62 },
@@ -33,6 +36,9 @@ export const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2025-03-21', narration: 'IB FUNDS TRANSFER DR-03271000041278-JAYA TANEJA', refNo: '000000000000000', withdrawalAmt: 100000.00, depositAmt: null, closingBalance: 1507477.62 },
   ],
   '03271000041278': [
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 1939064.57 },
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 90000.00, closingBalance: 1889064.57 },
+    { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 1799064.57 },
     { date: '2025-04-25', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320870221', withdrawalAmt: null, depositAmt: 500000.00, closingBalance: 1699064.57 },
     { date: '2025-04-16', narration: 'RTGS Cr-IOBA0002259-I J MANOCHA,RAVINDER MANOCHA-JAYA TANEJA-IOBAR52025041600313124', refNo: '0000426018195789', withdrawalAmt: null, depositAmt: 460000.00, closingBalance: 1199064.57 },
     { date: '2025-04-06', narration: '50200034218363-TPT-P-JV INDUSTRIES', refNo: '000189699159', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 7399064.57 },
