@@ -11,6 +11,9 @@ export interface Transaction {
 
 export const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2025-05-03', narration: 'UPI-MobikwikMerchant-ombk.aadc4813318ewevlrxf7@mbk-PPIW0881822-104193301756-UPI', refNo: '104193301756', withdrawalAmt: 590.00, depositAmt: null, closingBalance: 3017585.62 },
+    { date: '2025-05-03', narration: 'UPI-INDRESH KUMAR-bharatpe.9j0e0v7h2u641174@fbpe-FDRL0001382-104192973704-Pay to BharatPe Me', refNo: '104192973704', withdrawalAmt: 350.00, depositAmt: null, closingBalance: 3018175.62 },
+    { date: '2025-05-03', narration: 'UPI-SANJAY MEDICOS-q387677561@ybl-SBIN0009111-104180689735-UPI', refNo: '104180689735', withdrawalAmt: 45.00, depositAmt: null, closingBalance: 3018525.62 },
     { date: '2025-05-02', narration: 'UPI-SATISH KUMAR SO OM P-satishsharma7027@okicici-PUNB0024510-548886306617-UPI', refNo: '548886306617', withdrawalAmt: null, depositAmt: 4000.00, closingBalance: 3018570.62 },
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 90000.00, closingBalance: 3014570.62 },
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320452342', withdrawalAmt: null, depositAmt: 70000.00, closingBalance: 2924570.62 },
@@ -31,10 +34,7 @@ export const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2025-04-04', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000389929580', withdrawalAmt: 1000000.00, depositAmt: null, closingBalance: 1180230.62 },
     { date: '2025-04-01', narration: 'Interest paid till 31-MAR-2025', refNo: 'AXOBR21479128454', withdrawalAmt: null, depositAmt: 5044.00, closingBalance: 1280230.62 },
     { date: '2025-03-30', narration: 'UPI-Simran -simrankalra242@oksbi-SBIN0021275-102326865831-UPI', refNo: '102326865831', withdrawalAmt: 500.00, depositAmt: null, closingBalance: 1275186.62 },
-    { date: '2025-03-28', narration: 'IMPS-508716157771-PPF-55000000191609-Saving Scheme', refNo: '000000000000000', withdrawalAmt: 150000.00, depositAmt: null, closingBalance: 1275686.62 },
-    { date: '2025-03-26', narration: 'NEFT Cr-KKBK0000958-ASS CREATIONS PVT LTD-SANJAY TANEJA-KKBKN62025032605008480', refNo: 'KKBKN62025032605008480', withdrawalAmt: null, depositAmt: 68209.00, closingBalance: 1425686.62 },
-    { date: '2025-03-22', narration: 'IMPS-508115137565-PPF-55000000191609-HDFC-SANJAY TANEJA', refNo: '000000000000000', withdrawalAmt: 150000.00, depositAmt: null, closingBalance: 1357477.62 },
-    { date: '2025-03-21', narration: 'IB FUNDS TRANSFER DR-03271000041278-JAYA TANEJA', refNo: '000000000000000', withdrawalAmt: 100000.00, depositAmt: null, closingBalance: 1507477.62 },
+    
   ],
   '03271000041278': [
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 1939064.57 },
