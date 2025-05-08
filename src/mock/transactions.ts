@@ -11,6 +11,8 @@ export interface Transaction {
 
 export const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2025-05-07', narration: 'EMI 454727061 Chq S4547270610311 0425454727061', refNo: '000000000000000', withdrawalAmt: 35294.00, depositAmt: null, closingBalance: 2941959.62 },
+    { date: '2025-05-07', narration: 'EMI 461561532 Chq S4615615320151 0425461561532', refNo: '0000423625612847', withdrawalAmt: 40332.00, depositAmt: null, closingBalance: 2977253.62 },
     { date: '2025-05-03', narration: 'UPI-MobikwikMerchant-ombk.aadc4813318ewevlrxf7@mbk-PPIW0881822-104193301756-UPI', refNo: '104193301756', withdrawalAmt: 590.00, depositAmt: null, closingBalance: 3017585.62 },
     { date: '2025-05-03', narration: 'UPI-INDRESH KUMAR-bharatpe.9j0e0v7h2u641174@fbpe-FDRL0001382-104192973704-Pay to BharatPe Me', refNo: '104192973704', withdrawalAmt: 350.00, depositAmt: null, closingBalance: 3018175.62 },
     { date: '2025-05-03', narration: 'UPI-SANJAY MEDICOS-q387677561@ybl-SBIN0009111-104180689735-UPI', refNo: '104180689735', withdrawalAmt: 45.00, depositAmt: null, closingBalance: 3018525.62 },
@@ -33,7 +35,6 @@ export const transactionsData: { [key: string]: Transaction[] } = {
     { date: '2025-04-04', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000389929580', withdrawalAmt: 1000000.00, depositAmt: null, closingBalance: 1080230.62 },
     { date: '2025-04-04', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000389929580', withdrawalAmt: 1000000.00, depositAmt: null, closingBalance: 1180230.62 },
     { date: '2025-04-01', narration: 'Interest paid till 31-MAR-2025', refNo: 'AXOBR21479128454', withdrawalAmt: null, depositAmt: 5044.00, closingBalance: 1280230.62 },
-    { date: '2025-03-30', narration: 'UPI-Simran -simrankalra242@oksbi-SBIN0021275-102326865831-UPI', refNo: '102326865831', withdrawalAmt: 500.00, depositAmt: null, closingBalance: 1275186.62 },
     
   ],
   '03271000041278': [
