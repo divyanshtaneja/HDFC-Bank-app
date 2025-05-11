@@ -11,7 +11,7 @@ import SavingSchemeAccountScreen from '@/components/saving-scheme-account-screen
 import { formatIndianCurrency } from '@/utils/formatters'
 
 const accounts = [
-  { number: '03271000009991', balance: '29,91,959.62' },
+  { number: '03271000009991', balance: '30,51,959.62' },
   { number: '03271000041278', balance: '19,39,064.57' },
 ]
 
