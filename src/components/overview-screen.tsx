@@ -26,7 +26,7 @@ export default function OverviewScreen({ onBack, onLogout, onViewSavingsAccount,
   }
 
   const accountTypes = [
-    { name: 'Savings Account', balance: '58,41,024.19', onClick: onViewSavingsAccount },
+    { name: 'Savings Account', balance: '59,01,024.19', onClick: onViewSavingsAccount },
     { name: 'Saving Scheme Account', balance: '17,04,502.00', onClick: onViewSavingSchemeAccount },
     { name: 'Recurring Deposits', balance: null },
     { name: 'My Passion Fund', balance: null },
