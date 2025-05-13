@@ -11,6 +11,8 @@ export interface Transaction {
 
 export const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2025-05-13', narration: 'IMPS-513317896419-Mrs SPRIHA NUPUR-SBIN-xxxxxxxxxxxxx8641-ReqPay', refNo: '513317893505 ', withdrawalAmt: null, depositAmt: 350000.00, closingBalance: 3901959.62 },
+    { date: '2025-05-13', narration: 'IMPS-513317896419-Mrs SPRIHA NUPUR-SBIN-xxxxxxxxxxxxx8641-ReqPay', refNo: '513317893505 ', withdrawalAmt: null, depositAmt: 500000.00, closingBalance: 3551959.62 },
     { date: '2025-05-11', narration: 'IMPS-512811844915-SUNIT GUPTA-ICIC-xxxxxxxx5966-IMPS Transaction', refNo: '513110483481 ', withdrawalAmt: null, depositAmt: 60000.00, closingBalance: 3051959.62 },
     { date: '2025-05-09', narration: 'IMPS-512811844915-SUNIT GUPTA-ICIC-xxxxxxxx5966-IMPS Transaction', refNo: '512910965615 ', withdrawalAmt: null, depositAmt: 49000.00, closingBalance: 2991959.62 },
     { date: '2025-05-08', narration: 'IMPS-512811844915-SUNIT GUPTA-ICIC-xxxxxxxx5966-IMPS Transaction', refNo: '512811844915 ', withdrawalAmt: null, depositAmt: 1000.00, closingBalance: 2942959.62 },
