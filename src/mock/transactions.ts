@@ -11,6 +11,10 @@ export interface Transaction {
 
 export const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2025-05-16', narration: 'NEFT Dr-SBIN0031770-Monika Maan-NETBANK, MUM-HDFCN52025051639405635-REG', refNo: 'HDFCN52025051639405635', withdrawalAmt: 430000.00, depositAmt: null, closingBalance: 3011959.62 },
+    { date: '2025-05-16', narration: 'NEFT Dr-SBIN0031770-Monika Maan-NETBANK, MUM-HDFCN52025051639405635-REG', refNo: 'HDFCN52025051639405635', withdrawalAmt: 250000.00, depositAmt: null, closingBalance: 3441959.62 },
+    { date: '2025-05-16', narration: 'NEFT Dr-SBIN0031770-Monika Maan-NETBANK, MUM-HDFCN52025051639405635-REG', refNo: 'HDFCN52025051639405635', withdrawalAmt: 250000.00, depositAmt: null, closingBalance: 3691959.62 },
+    { date: '2025-05-16', narration: 'IMPS-510012128567-Arun Mann-SBIN-xxxxxxx2216-P', refNo: '513614120568', withdrawalAmt: 70000.00, depositAmt: null, closingBalance: 3941959.62 },
     { date: '2025-05-15', narration: 'UPI-BHANSINGH-q957829181@ybl-YESB0YBLUPI-104843231963-UPI', refNo: '104843231963 ', withdrawalAmt: 200.00, depositAmt: null, closingBalance: 4011759.62 },
     { date: '2025-05-14', narration: 'IMPS-512811844915-SUNIT GUPTA-ICIC-xxxxxxxx5966-IMPS Transaction', refNo: '513416706268 ', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 4011959.62 },
     { date: '2025-05-14', narration: 'NEFT-Cr-SIP REDEEM DIVYANSH TANEJA-ICIC-xxxxxx6445', refNo: '023174791542 ', withdrawalAmt: null, depositAmt: 60000.00, closingBalance: 3961959.62 },
