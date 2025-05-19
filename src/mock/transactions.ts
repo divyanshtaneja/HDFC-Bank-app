@@ -11,6 +11,8 @@ export interface Transaction {
 
 export const transactionsData: { [key: string]: Transaction[] } = {
   '03271000009991': [
+    { date: '2025-05-19', narration: 'CHQ DEP - MICR CLG - NOIDA WBO', refNo: '000000094622', withdrawalAmt: null, depositAmt: 6750000.00, closingBalance: 16511959.6 },
+    { date: '2025-05-19', narration: 'CHQ DEP - MICR CLG - NOIDA WBO', refNo: '000000094621', withdrawalAmt: null, depositAmt: 6750000.00, closingBalance: 9761959.62 },
     { date: '2025-05-16', narration: 'NEFT Dr-SBIN0031770-Monika Maan-NETBANK, MUM-HDFCN52025051639405635-REG', refNo: 'HDFCN52025051639405635', withdrawalAmt: 430000.00, depositAmt: null, closingBalance: 3011959.62 },
     { date: '2025-05-16', narration: 'NEFT Dr-SBIN0031770-Monika Maan-NETBANK, MUM-HDFCN52025051639405635-REG', refNo: 'HDFCN52025051639405635', withdrawalAmt: 250000.00, depositAmt: null, closingBalance: 3441959.62 },
     { date: '2025-05-16', narration: 'NEFT Dr-SBIN0031770-Monika Maan-NETBANK, MUM-HDFCN52025051639405635-REG', refNo: 'HDFCN52025051639405635', withdrawalAmt: 250000.00, depositAmt: null, closingBalance: 3691959.62 },
@@ -50,6 +52,7 @@ export const transactionsData: { [key: string]: Transaction[] } = {
     
   ],
   '03271000041278': [
+    { date: '2025-05-19', narration: 'CHQ DEP - MICR CTS - ICIC PASCHIMV', refNo: '000008957428', withdrawalAmt: null, depositAmt: 607000.00, closingBalance: 2546064.57 },
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 1939064.57 },
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 90000.00, closingBalance: 1889064.57 },
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 1799064.57 },
