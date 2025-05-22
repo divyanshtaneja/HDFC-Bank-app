@@ -20,7 +20,7 @@ interface AccountDetails {
 const accounts: { [key: string]: AccountDetails } = {
   '03271000009991': {
     accountNumber: '03271000009991',
-    balance: '1,19,99,774.6',
+    balance: '1,19,83,924.6',
     accountHolder: 'SANJAY TANEJA',
     branch: 'MULTAN NAGAR',
     ifsc: 'HDFC0004362',
