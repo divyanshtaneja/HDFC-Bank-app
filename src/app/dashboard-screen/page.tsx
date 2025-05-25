@@ -12,7 +12,7 @@ import { formatIndianCurrency } from '@/utils/formatters'
 
 const accounts = [
   { number: '03271000009991', balance: '1,19,83,924.6' },
-  { number: '03271000041278', balance: '25,46,064.57' },
+  { number: '03271000041278', balance: '19,44,064.57' },
 ]
 
 export default function DashboardScreen() {

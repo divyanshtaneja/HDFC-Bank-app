@@ -37,7 +37,7 @@ const accounts: Account[] = [
   },
   {
     number: '03271000041278',
-    balance: '25,46,064.57',  
+    balance: '19,44,064.57',  
     accountHolder: 'JAYA TANEJA',
     branch: 'MULTAN NAGAR, DELHI',
     ifsc: 'HDFC0004362',

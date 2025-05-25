@@ -58,7 +58,8 @@ export const transactionsData: { [key: string]: Transaction[] } = {
     
   ],
   '03271000041278': [
-    { date: '2025-05-19', narration: 'CHQ DEP - MICR CTS - ICIC PASCHIMV', refNo: '000008957430', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 2546064.57 },
+    { date: '2025-05-25', narration: 'IB CC BILL PAY', refNo: '0000000000', withdrawalAmt: 602000, depositAmt: null, closingBalance: 2546064.57 },
+    { date: '2025-05-19', narration: 'CHQ DEP - MICR CTS - ICIC PASCHIMV', refNo: '000008957430', withdrawalAmt: null, depositAmt: 100000.00, closingBalance: 1944064.57 },
     { date: '2025-05-19', narration: 'CHQ DEP - MICR CTS - ICIC PASCHIMV', refNo: '000008957428', withdrawalAmt: null, depositAmt: 507000.00, closingBalance: 2446064.57 },
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 50000.00, closingBalance: 1939064.57 },
     { date: '2025-04-27', narration: '50200034218363-TPT-p-JV INDUSTRIES', refNo: '000320141224', withdrawalAmt: null, depositAmt: 90000.00, closingBalance: 1889064.57 },
