@@ -29,8 +29,8 @@ interface Account {
 
 const accounts: Account[] = [
   {
-    number: '03271000009991',
-    balance: '1,19,83,924.6',
+    number: '50100436924130',
+    balance: '2,82,184.44',
     accountHolder: 'SANJAY TANEJA',
     branch: 'MULTAN NAGAR',
     ifsc: 'HDFC0004362',
