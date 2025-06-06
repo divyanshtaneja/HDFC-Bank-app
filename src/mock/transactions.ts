@@ -10,7 +10,9 @@ export interface Transaction {
 }
 
 export const transactionsData: { [key: string]: Transaction[] } = {
-  '03271000009991': [
+  '5010043692413': [
+    { date: '2025-06-06', narration: 'INWARD REMIT GLOBAL DEXT/ADVANCE', refNo: '757196847643', withdrawalAmt: null, depositAmt: 140000.00, closingBalance: 282184.44 },
+    { date: '2025-06-06', narration: 'INWARD REMIT GLOBAL DEXT/ADVANCE', refNo: '757196847639', withdrawalAmt: null, depositAmt: 140000.00, closingBalance: 142184.44 },
     { date: '2025-05-20', narration: 'UPI-RAKESH-9911734020@ybl-PUNB0657700-757196847643-Payment from Phone', refNo: '757196847643', withdrawalAmt: null, depositAmt: 110.00, closingBalance: 11983924.6 },
     { date: '2025-05-21', narration: 'RTGS Dr-UTIB0000533-Pinki Nagpal-NETBANK, MUM-HDFCR52025052173061533-reg', refNo: 'HDFCR52025052173061533', withdrawalAmt: 4500000.00, depositAmt: null, closingBalance: 11983814.6 },
     { date: '2025-05-21', narration: 'UPI-Happyfares Ac Travel-happyfares735.rzp@axisbank-UTIB0000100-478214211415-Pay using UPI', refNo: '478214211415', withdrawalAmt: 27960.00, depositAmt: null, closingBalance: 16483814.6 },
